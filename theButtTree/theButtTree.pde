@@ -4,7 +4,7 @@ int[] colors = {
 
 
 void setup() {
-  size(500, 500 ) ;
+  size(600, 600 ) ;
 }
 
 void branch(int level, float xstart, float ystart, float l, float w, float degrees) {
@@ -44,6 +44,9 @@ void branch(int level, float xstart, float ystart, float l, float w, float degre
 
 void draw() {
   background(77, 89, 23); 
+ stroke(77, 89, 23);
+  fill(106,69,1);
+  ellipse(300, 600, 800, 200);
   float safey=mouseY;
   float max_safey= 0.37 * height;
   if (safey >= max_safey) {

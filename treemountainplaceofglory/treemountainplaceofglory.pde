@@ -32,7 +32,7 @@ void rotrect( float angle, float x, float y, float w, float h )
 {
   pushMatrix();
   translate(x, y);
-  rotate(-(angle/360)*2*PI);   //pie is yummy!
+  rotate(-(angle/360)*2*PI);   
   rect(0, 0, w, h);
   popMatrix();
 }
