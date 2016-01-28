@@ -19,6 +19,7 @@ void branch(int level, float xstart, float ystart, float l, float w, float degre
 //    stroke(255) ;
 //  } else {
 //    stroke(0);
+
 //  }
   
   int index = level;//min(level,colors.length-1);
@@ -46,7 +47,7 @@ void draw() {
   background(77, 89, 23); 
  stroke(77, 89, 23);
   fill(106,69,1);
-  ellipse(300, 600, 800, 200);
+  ellipse(width/2, height, 1.333*width, 0.333*width);
   float safey=mouseY;
   float max_safey= 0.37 * height;
   if (safey >= max_safey) {
