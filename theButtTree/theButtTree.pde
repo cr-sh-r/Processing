@@ -9,21 +9,12 @@ void setup() {
 
 void branch(int level, float xstart, float ystart, float l, float w, float degrees) {
   strokeWeight(w);
-
-
   float radians = (degrees/180) * PI;
   float xend = xstart + l*cos(radians);
   float yend = ystart + l*sin(radians);
 
-//  if (level%2 == 1) {
-//    stroke(255) ;
-//  } else {
-//    stroke(0);
-
-//  }
-  
   int index = level;//min(level,colors.length-1);
-  if (index >= colors.length ){
+  if (index >= colors.length ) {
     index= colors.length-1;
   }
   int c = colors[index];
@@ -38,15 +29,19 @@ void branch(int level, float xstart, float ystart, float l, float w, float degre
     if (width_scale >= max_width_scale) {
       width_scale = max_width_scale;
     }
-    branch(level +1, xend, yend, l*length_scale, w*width_scale, degrees+branch_angle);  
+    branch(level+1, 
+           xend, yend, 
+           l*length_scale, 
+           w*width_scale, 
+           degrees+branch_angle);  
     branch(level+1, xend, yend, l*length_scale, w*width_scale, degrees-branch_angle);
   }
 }
 
 void draw() {
-  background(77, 89, 23); 
- stroke(77, 89, 23);
-  fill(106,69,1);
+  background(22, 200, 100); 
+  stroke(77, 89, 23);
+  fill(106, 69, 1);
   ellipse(width/2, height, 1.333*width, 0.333*width);
   float safey=mouseY;
   float max_safey= 0.37 * height;
