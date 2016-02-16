@@ -48,6 +48,7 @@ void branch(int level, float xstart, float ystart, float l, float w, float degre
 }
 
 void draw() {
+  randomSeed(0); 
   background(38, 116, 139); 
   stroke(77, 89, 23);
   fill(62, 46, 4);
