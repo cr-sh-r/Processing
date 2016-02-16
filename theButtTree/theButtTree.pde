@@ -37,7 +37,8 @@ void branch(int level, float xstart, float ystart, float l, float w, float degre
     branch(level+1, xend, yend, l*length_scale, w*width_scale, degrees-branch_angle);
   }
   
-  else {
+ // if (level > 2 ){
+   if (w < 10 ){
     fill(0,255,0);
     ellipse(xend, yend, 10, 10);
   }
