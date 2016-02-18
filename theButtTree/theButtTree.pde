@@ -37,7 +37,7 @@ void branch(int level, float xstart, float ystart, float l, float w, float degre
     branch(level+1, xend, yend, l*length_scale, w*width_scale, degrees-branch_angle);
   }
   
- // if (level > 2 ){
+
    if (w < 8 ){
     stroke(65,129,38);
     int g = (int)random(255);
@@ -48,7 +48,7 @@ void branch(int level, float xstart, float ystart, float l, float w, float degre
 }
 
 void draw() {
-  //randomSeed(0); 
+  randomSeed(0); 
   background(38, 116, 139); 
   stroke(77, 89, 23);
   fill(62, 46, 4);
