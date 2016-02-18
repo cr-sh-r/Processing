@@ -23,7 +23,7 @@ void branch(int level, float xstart, float ystart, float l, float w, float degre
 
   if (w >= 1) {
     float branch_angle = 30;
-    float length_scale = 0.7;
+    float length_scale = 0.4 + random(0.5);
     float width_scale = (float)mouseX/width;
     float max_width_scale = 0.666 ;
     if (width_scale >= max_width_scale) {
@@ -38,7 +38,7 @@ void branch(int level, float xstart, float ystart, float l, float w, float degre
   }
   
  // if (level > 2 ){
-   if (w < 10 ){
+   if (w < 8 ){
     stroke(65,129,38);
     int g = (int)random(255);
     int r = (int)random(255);
@@ -48,7 +48,7 @@ void branch(int level, float xstart, float ystart, float l, float w, float degre
 }
 
 void draw() {
-  randomSeed(0); 
+  //randomSeed(0); 
   background(38, 116, 139); 
   stroke(77, 89, 23);
   fill(62, 46, 4);
