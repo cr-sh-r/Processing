@@ -2,9 +2,18 @@ int[] colors = {
   0, 16, 32, 48, 64, 80, 96, 112, 128, 144, 160, 176, 192
 };
 
+int seed = 0 ;
 
 void setup() {
   size(600, 600 ) ;
+}
+
+
+void keyPressed()
+{
+  if (key == ' ') {
+  seed =seed + 1;
+  }
 }
 
 void branch(int level, float xstart, float ystart, float l, float w, float degrees) {
@@ -21,7 +30,8 @@ void branch(int level, float xstart, float ystart, float l, float w, float degre
   stroke(c);
   line(xstart, ystart, xend, yend);
 
-  if (w >= 1) {
+  //if (w >= 1) {
+   if (level < 6){
     float branch_angle = 30;
     float length_scale = 0.4 + random(0.5);
     float width_scale = (float)mouseX/width;
@@ -38,7 +48,7 @@ void branch(int level, float xstart, float ystart, float l, float w, float degre
   }
   
 
-   if (w < 8 ){
+   if (level >= 3 ){
     stroke(65,129,38);
     int g = (int)random(255);
     int r = (int)random(255);
@@ -48,7 +58,7 @@ void branch(int level, float xstart, float ystart, float l, float w, float degre
 }
 
 void draw() {
-  randomSeed(0); 
+  randomSeed(seed); 
   background(38, 116, 139); 
   stroke(77, 89, 23);
   fill(62, 46, 4);
