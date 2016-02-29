@@ -22,7 +22,7 @@ void draw() {
     }
     
 if (key == '1'){
-  ellipse(mouseX, mouseY, 20, 20);
+  ellipse(mouseX, mouseY, 10, 10);
 }
  if (key == '2'){
    ellipse(mouseX, mouseY, 40, 40);
@@ -34,7 +34,9 @@ if (key == '1'){
 if (key == '4'){
    ellipse(mouseX, mouseY, 80, 80);
  }
- 
+ else if (mousePressed){
+      ellipse(mouseX, mouseY, 40, 40);
+ }
   }
   //saveFrame("betterthanphotoshop-######.png");
 }
