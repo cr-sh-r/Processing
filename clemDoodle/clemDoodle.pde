@@ -20,24 +20,26 @@ void draw() {
     } else {
       fill(0);
     }
-    
-if (key == '1'){
-  ellipse(mouseX, mouseY, 10, 10);
-}
- if (key == '2'){
-   ellipse(mouseX, mouseY, 40, 40);
- }
- 
- if (key == '3'){
-   ellipse(mouseX, mouseY, 60, 60);
- }
-if (key == '4'){
-   ellipse(mouseX, mouseY, 80, 80);
- }
- else if (mousePressed){
+
+    if (key == '1') {
+      fill(255, 0, 0);
+      ellipse(mouseX, mouseY, 10, 10);
+    } else if (key == '2') {
       ellipse(mouseX, mouseY, 40, 40);
- }
+    } else if (key == '3') {
+      ellipse(mouseX, mouseY, 60, 60);
+    } else if (key == '4') {
+      ellipse(mouseX, mouseY, 80, 80);
+    } else if (mousePressed) {
+      fill(0, 255, 0);
+      ellipse(mouseX, mouseY, 40, 40);
+    }
   }
+
+  String message = "key: " + key;
+  fill(255, 255, 255);
+  text(message, mouseX, mouseY);
+
   //saveFrame("betterthanphotoshop-######.png");
 }
 
