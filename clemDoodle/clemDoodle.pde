@@ -20,9 +20,22 @@ void draw() {
     } else {
       fill(0);
     }
-
-    ellipse(mouseX, mouseY, 80, 80);
+    
+if (key == '1'){
+  ellipse(mouseX, mouseY, 20, 20);
+}
+ if (key == '2'){
+   ellipse(mouseX, mouseY, 40, 40);
+ }
+ 
+ if (key == '3'){
+   ellipse(mouseX, mouseY, 60, 60);
+ }
+if (key == '4'){
+   ellipse(mouseX, mouseY, 80, 80);
+ }
+ 
   }
-  saveFrame("#betterthanphotoshop-######.png");
+  //saveFrame("betterthanphotoshop-######.png");
 }
 
