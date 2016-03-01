@@ -1,4 +1,7 @@
 int BrushSize = 50 ;
+int ColorR  =  0 ;
+int ColorG  =  0 ;
+int ColorB  =  0 ;
 void setup() {
   size(800, 800);
   smooth();
@@ -17,25 +20,27 @@ void keyPressed()
     BrushSize = 80;
   } else if (key == '5') {
     BrushSize = 100;
+  } else if (key == 'q') {
+    ColorR = 156 ;
+    ColorG = 4 ;
+    ColorB = 9 ;
+  } else if (key== 'w') {
+    ColorR = 232 ;
+    ColorG = 154 ;
+    ColorB = 28 ;
+  } else if (key== 'e') {
+    ColorR = 255 ;
+    ColorG = 215 ;
+    ColorB = 50 ;
+  } else if (key== 'r') {
+    ColorR = 142 ;
+    ColorG = 209 ;
+    ColorB = 19 ;
   }
 }
-
 void draw() {
   if (mousePressed) {
-    if (keyPressed) {
-      if (key == 'q') {
-        fill(156, 4, 9 );
-      } else if (key== 'w') {
-        fill(232, 154, 28);
-      } else if (key== 'e') {
-        fill(255, 215, 50);
-      } else if (key== 'r') {
-        fill(142, 209, 19);
-      }
-    } else {
-      fill(0);
-    }
-
+    fill(ColorR, ColorG, ColorB );
     ellipse(mouseX, mouseY, BrushSize, BrushSize);
   }
 
