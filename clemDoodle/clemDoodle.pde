@@ -1,8 +1,23 @@
-
+int BrushSize = 50 ;
 void setup() {
   size(800, 800);
   smooth();
   noStroke();
+}
+
+void keyPressed()
+{
+  if (key == '1') {
+    BrushSize = 10 ;
+  } else if (key == '2') {
+    BrushSize = 40 ;
+  } else if (key == '3') {
+    BrushSize = 60;
+  } else if (key == '4') {
+    BrushSize = 80;
+  } else if (key == '5') {
+    BrushSize = 100;
+  }
 }
 
 void draw() {
@@ -21,24 +36,14 @@ void draw() {
       fill(0);
     }
 
-    if (key == '1') {
-      fill(255, 0, 0);
-      ellipse(mouseX, mouseY, 10, 10);
-    } else if (key == '2') {
-      ellipse(mouseX, mouseY, 40, 40);
-    } else if (key == '3') {
-      ellipse(mouseX, mouseY, 60, 60);
-    } else if (key == '4') {
-      ellipse(mouseX, mouseY, 80, 80);
-    } else if (mousePressed) {
-      fill(0, 255, 0);
-      ellipse(mouseX, mouseY, 40, 40);
-    }
+    ellipse(mouseX, mouseY, BrushSize, BrushSize);
   }
 
+  fill(0, 0, 0);
+  rect(40, 40, 50, 20);
   String message = "key: " + key;
   fill(255, 255, 255);
-  text(message, mouseX, mouseY);
+  text(message, 50, 50);
 
   //saveFrame("betterthanphotoshop-######.png");
 }
