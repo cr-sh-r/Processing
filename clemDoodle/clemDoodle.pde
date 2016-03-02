@@ -6,6 +6,7 @@ void setup() {
   size(800, 800);
   smooth();
   noStroke();
+  background(11, 142, 188);
 }
 
 void keyPressed()
@@ -36,6 +37,8 @@ void keyPressed()
     ColorR = 142 ;
     ColorG = 209 ;
     ColorB = 19 ;
+  } else if (key == 's') {
+    saveFrame("clemDoodle saves/betterthanphotoshop-######.png");
   }
 }
 void draw() {
@@ -44,11 +47,11 @@ void draw() {
     ellipse(mouseX, mouseY, BrushSize, BrushSize);
   }
 
-  fill(0, 0, 0);
-  rect(40, 40, 50, 20);
-  String message = "key: " + key;
-  fill(255, 255, 255);
-  text(message, 50, 50);
+  //fill(0, 0, 0);
+  //rect(40, 40, 50, 20);
+  //String message = "key: " + key;
+  //fill(255, 255, 255);
+  //text(message, 50, 50);
 
   //saveFrame("betterthanphotoshop-######.png");
 }
