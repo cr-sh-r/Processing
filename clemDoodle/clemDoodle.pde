@@ -2,11 +2,14 @@ int BrushSize = 50 ;
 int ColorR  =  0 ;
 int ColorG  =  0 ;
 int ColorB  =  0 ;
+int BackgroundColorR  =  255 ;
+int BackgroundColorG  =  255 ;
+int BackgroundColorB  =  255 ;
 void setup() {
   size(800, 800);
   smooth();
   noStroke();
-  background(11, 142, 188);
+  background(BackgroundColorR, BackgroundColorG, BackgroundColorB);
 }
 
 void keyPressed()
@@ -39,6 +42,10 @@ void keyPressed()
     ColorB = 19 ;
   } else if (key == 's') {
     saveFrame("clemDoodle saves/betterthanphotoshop-######.png");
+  } else if (key== 'd') {
+    ColorR =BackgroundColorR  ;
+    ColorG =BackgroundColorG  ;
+    ColorB =BackgroundColorB  ;
   }
 }
 void draw() {
