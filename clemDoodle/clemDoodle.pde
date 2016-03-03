@@ -53,10 +53,14 @@ void keyPressed()
 }
 void draw() {
   if (mousePressed) {
-    fill(ColorR, ColorG, ColorB );
-    line(mouseWasX , mouseWasY,mouseX , mouseY);
+    stroke(ColorR, ColorG, ColorB );
+    strokeWeight(BrushSize);
+    line(mouseWasX, mouseWasY, mouseX, mouseY);
+
     //ellipse(mouseX, mouseY, BrushSize, BrushSize);
   }
+  mouseWasX = mouseX ;
+  mouseWasY = mouseY ;
 
   //fill(0, 0, 0);
   //rect(40, 40, 50, 20);
