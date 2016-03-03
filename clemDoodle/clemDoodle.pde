@@ -5,10 +5,13 @@ int ColorB  =  0 ;
 int BackgroundColorR  =  255 ;
 int BackgroundColorG  =  255 ;
 int BackgroundColorB  =  255 ;
+int mouseWasX = 0 ;
+int mouseWasY = 0 ;
+
 void setup() {
   size(800, 800);
   smooth();
-  noStroke();
+  //noStroke();
   background(BackgroundColorR, BackgroundColorG, BackgroundColorB);
 }
 
@@ -51,7 +54,8 @@ void keyPressed()
 void draw() {
   if (mousePressed) {
     fill(ColorR, ColorG, ColorB );
-    ellipse(mouseX, mouseY, BrushSize, BrushSize);
+    line(mouseWasX , mouseWasY,mouseX , mouseY);
+    //ellipse(mouseX, mouseY, BrushSize, BrushSize);
   }
 
   //fill(0, 0, 0);
