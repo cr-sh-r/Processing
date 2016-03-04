@@ -48,11 +48,15 @@ void draw() {
   mouseWasX = mouseX ;
   mouseWasY = mouseY ;
 
-  //fill(0, 0, 0);
-  //rect(40, 40, 50, 20);
+  colorMode(HSB,360,100,100);
+  color c = color(180,100,100);
+  fill(c);
+  rect(40, 40, 50, 20);
+  colorMode(RGB,255);
   //String message = "key: " + key;
   //fill(255, 255, 255);
   //text(message, 50, 50);
+
 
   //saveFrame("betterthanphotoshop-######.png");
 }
