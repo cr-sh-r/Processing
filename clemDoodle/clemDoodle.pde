@@ -1,10 +1,6 @@
 int BrushSize = 50 ;
-int ColorR  =  0 ;
-int ColorG  =  0 ;
-int ColorB  =  0 ;
-int BackgroundColorR  =  255 ;
-int BackgroundColorG  =  255 ;
-int BackgroundColorB  =  255 ;
+color BrushColor = color(0, 0, 0);
+color BackgroundColor  = color(255, 255, 255) ;
 int mouseWasX = 0 ;
 int mouseWasY = 0 ;
 
@@ -12,7 +8,7 @@ void setup() {
   size(800, 800);
   smooth();
   //noStroke();
-  background(BackgroundColorR, BackgroundColorG, BackgroundColorB);
+  background(BackgroundColor);
 }
 
 void keyPressed()
@@ -28,32 +24,22 @@ void keyPressed()
   } else if (key == '5') {
     BrushSize = 100;
   } else if (key == 'q') {
-    ColorR = 156 ;
-    ColorG = 4 ;
-    ColorB = 9 ;
+    BrushColor = color(156, 4, 9 );
   } else if (key== 'w') {
-    ColorR = 232 ;
-    ColorG = 154 ;
-    ColorB = 28 ;
+    BrushColor = color(232, 154, 28 );
   } else if (key== 'e') {
-    ColorR = 255 ;
-    ColorG = 215 ;
-    ColorB = 50 ;
+    BrushColor = color(255, 215, 50);
   } else if (key== 'r') {
-    ColorR = 142 ;
-    ColorG = 209 ;
-    ColorB = 19 ;
+    BrushColor = color(142, 209, 19 );
   } else if (key == 's') {
     saveFrame("clemDoodle saves/betterthanphotoshop-######.png");
   } else if (key== 'd') {
-    ColorR =BackgroundColorR  ;
-    ColorG =BackgroundColorG  ;
-    ColorB =BackgroundColorB  ;
+    BrushColor = BackgroundColor  ;
   }
 }
 void draw() {
   if (mousePressed) {
-    stroke(ColorR, ColorG, ColorB );
+    stroke(BrushColor);
     strokeWeight(BrushSize);
     line(mouseWasX, mouseWasY, mouseX, mouseY);
 
