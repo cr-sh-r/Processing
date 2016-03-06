@@ -48,14 +48,26 @@ void draw() {
   mouseWasX = mouseX ;
   mouseWasY = mouseY ;
 
-  colorMode(HSB,360,100,100);
-  color c = color(180,100,100);
-  fill(c);
-  rect(40, 40, 50, 20);
-  colorMode(RGB,255);
-  //String message = "key: " + key;
-  //fill(255, 255, 255);
-  //text(message, 50, 50);
+  noStroke();
+  float numcolors = 255;
+  colorMode(HSB,numcolors,100,100);
+  float rectwidth = width/numcolors ;
+  int i = 0 ;
+  while (i < numcolors) {
+    color c = color(i, 99, 99);
+    fill(c);
+    rect(rectwidth*i, 0, rectwidth, 60 );
+    if (mouseX >= rectwidth*i && mouseX <= rectwidth*i + rectwidth && 
+        mouseY >= 0 && mouseY <= 60){
+          BrushColor = c ;
+        }
+    i=i+1 ;
+    
+  }
+
+
+  colorMode(RGB, 255);
+
 
 
   //saveFrame("betterthanphotoshop-######.png");
