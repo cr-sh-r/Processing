@@ -7,7 +7,7 @@ boolean WasFocused = false;
 boolean WasWasFocused = false ;
 
 void setup() {
-  size(800, 800);
+  size(700, 700);
   smooth();
   //noStroke();
   background(BackgroundColor);
@@ -49,7 +49,10 @@ void draw() {
 
     //ellipse(mouseX, mouseY, BrushSize, BrushSize);
   }
-
+  
+  
+  
+  
   noStroke();
   float numcolors = 255;
   colorMode(HSB, numcolors, 100, 100);
@@ -64,9 +67,12 @@ void draw() {
       BrushColor = c ;
     }
     i=i+1 ;
+    
   }
 
-
+ fill(BrushColor);
+  ellipse(width - 40, 100, 50, 50 );
+  
   colorMode(RGB, 255);
 
 
@@ -74,7 +80,7 @@ void draw() {
   mouseWasY = mouseY ;
   WasWasFocused = WasFocused ;
   WasFocused = focused ;
-  
+
   //saveFrame("betterthanphotoshop-######.png");
 }
 
