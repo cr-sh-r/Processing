@@ -3,6 +3,8 @@ color BrushColor = color(0, 0, 0);
 color BackgroundColor  = color(255, 255, 255) ;
 int mouseWasX = 0 ;
 int mouseWasY = 0 ;
+boolean WasFocused = false;
+boolean WasWasFocused = false ;
 
 void setup() {
   size(800, 800);
@@ -38,19 +40,19 @@ void keyPressed()
   }
 }
 void draw() {
-  if (mousePressed) {
+  //print(focused + " " + mouseX + " " + mouseY + "\n");
+
+  if (mousePressed && WasFocused == true && focused == true && WasWasFocused == true) {
     stroke(BrushColor);
     strokeWeight(BrushSize);
     line(mouseWasX, mouseWasY, mouseX, mouseY);
 
     //ellipse(mouseX, mouseY, BrushSize, BrushSize);
   }
-  mouseWasX = mouseX ;
-  mouseWasY = mouseY ;
 
   noStroke();
   float numcolors = 255;
-  colorMode(HSB,numcolors,100,100);
+  colorMode(HSB, numcolors, 100, 100);
   float rectwidth = width/numcolors ;
   int i = 0 ;
   while (i < numcolors) {
@@ -58,18 +60,21 @@ void draw() {
     fill(c);
     rect(rectwidth*i, 0, rectwidth, 60 );
     if (mouseX >= rectwidth*i && mouseX <= rectwidth*i + rectwidth && 
-        mouseY >= 0 && mouseY <= 60){
-          BrushColor = c ;
-        }
+      mouseY >= 0 && mouseY <= 60) {
+      BrushColor = c ;
+    }
     i=i+1 ;
-    
   }
 
 
   colorMode(RGB, 255);
 
 
-
+  mouseWasX = mouseX ;
+  mouseWasY = mouseY ;
+  WasWasFocused = WasFocused ;
+  WasFocused = focused ;
+  
   //saveFrame("betterthanphotoshop-######.png");
 }
 
