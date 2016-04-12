@@ -7,7 +7,7 @@ boolean WasFocused = false;
 boolean WasWasFocused = false ;
 
 void setup() {
-  size(700, 700);
+  size(800, 800);
   smooth();
   //noStroke();
   background(BackgroundColor);
@@ -71,7 +71,7 @@ void draw() {
   }
 
  fill(BrushColor);
-  ellipse(width - 40, 100, 50, 50 );
+  ellipse(width - 40, 100, width/14, height/14 );
   
   colorMode(RGB, 255);
 
