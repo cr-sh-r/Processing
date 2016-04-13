@@ -7,7 +7,7 @@ boolean WasFocused = false;
 boolean WasWasFocused = false ;
 
 void setup() {
-  size(800, 800);
+  size(700, 700);
   smooth();
   //noStroke();
   background(BackgroundColor);
@@ -52,18 +52,20 @@ void draw() {
   
   
   
-  
+  //rainbow
   noStroke();
+  int rainbowheight= 60;
+  int brushselectorwidth= 100;
   float numcolors = 255;
   colorMode(HSB, numcolors, 100, 100);
-  float rectwidth = width/numcolors ;
+  float rectwidth = (width-brushselectorwidth)/numcolors ;
   int i = 0 ;
   while (i < numcolors) {
     color c = color(i, 99, 99);
-    fill(c);
-    rect(rectwidth*i, 0, rectwidth, 60 );
+    fill(c);                   
+    rect(rectwidth*i, 0, rectwidth, rainbowheight );
     if (mouseX >= rectwidth*i && mouseX <= rectwidth*i + rectwidth && 
-      mouseY >= 0 && mouseY <= 60) {
+      mouseY >= 0 && mouseY <= rainbowheight) {
       BrushColor = c ;
     }
     i=i+1 ;
@@ -71,7 +73,7 @@ void draw() {
   }
 
  fill(BrushColor);
-  ellipse(width - 40, 100, width/14, height/14 );
+  ellipse(width - brushselectorwidth/2, rainbowheight/2, width/14, height/14 );
   
   colorMode(RGB, 255);
 
