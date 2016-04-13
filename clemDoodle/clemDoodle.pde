@@ -51,12 +51,14 @@ void draw() {
   }
   
   
-  
+
   //rainbow
   noStroke();
   int rainbowheight= 60;
   int brushselectorwidth= 100;
   float numcolors = 255;
+  fill(255,255,255);
+rect(width - brushselectorwidth,0,brushselectorwidth,rainbowheight);
   colorMode(HSB, numcolors, 100, 100);
   float rectwidth = (width-brushselectorwidth)/numcolors ;
   int i = 0 ;
@@ -73,7 +75,7 @@ void draw() {
   }
 
  fill(BrushColor);
-  ellipse(width - brushselectorwidth/2, rainbowheight/2, width/14, height/14 );
+  ellipse(width - brushselectorwidth/2, rainbowheight/2, BrushSize, BrushSize);
   
   colorMode(RGB, 255);
 
