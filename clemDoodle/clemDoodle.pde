@@ -39,7 +39,7 @@ void keyPressed()
     BrushColor = BackgroundColor  ;
   }
 }
-void draw() {
+void draw() {                       
   //print(focused + " " + mouseX + " " + mouseY + "\n");
 
   if (mousePressed && WasFocused == true && focused == true && WasWasFocused == true) {
@@ -49,21 +49,20 @@ void draw() {
 
     //ellipse(mouseX, mouseY, BrushSize, BrushSize);
   }
-  
-  
+
+
 
   //rainbow
   noStroke();
   int rainbowheight= 60;
   int brushselectorwidth= 100;
   float numcolors = 255;
-  fill(255,255,255);
-rect(width - brushselectorwidth,0,brushselectorwidth,rainbowheight);
   colorMode(HSB, numcolors, 100, 100);
   float rectwidth = (width-brushselectorwidth)/numcolors ;
   int i = 0 ;
   while (i < numcolors) {
     color c = color(i, 99, 99);
+    //if mousePressed && mouseX ==
     fill(c);                   
     rect(rectwidth*i, 0, rectwidth, rainbowheight );
     if (mouseX >= rectwidth*i && mouseX <= rectwidth*i + rectwidth && 
@@ -71,12 +70,20 @@ rect(width - brushselectorwidth,0,brushselectorwidth,rainbowheight);
       BrushColor = c ;
     }
     i=i+1 ;
-    
   }
-
- fill(BrushColor);
+  if ( mousePressed && mouseX > (width - brushselectorwidth) && mouseX < width &&
+    mouseY < rainbowheight) {
+    BrushSize =  2*(mouseX - (width - brushselectorwidth/2)) ;
+    if ( BrushSize < 0 ) {
+      BrushSize = -BrushSize;
+    }
+  }
+  // brush sample
+  fill(0, 0, 99); //white in hsb
+  rect(width - brushselectorwidth, 0, brushselectorwidth, rainbowheight);
+  fill(BrushColor);
   ellipse(width - brushselectorwidth/2, rainbowheight/2, BrushSize, BrushSize);
-  
+
   colorMode(RGB, 255);
 
 
