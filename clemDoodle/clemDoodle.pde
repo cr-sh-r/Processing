@@ -71,12 +71,19 @@ void draw() {
     }
     i=i+1 ;
   }
-  if ( mousePressed && mouseX > (width - brushselectorwidth) && mouseX < width &&
-    mouseY < rainbowheight) {
-    BrushSize =  2*(mouseX - (width - brushselectorwidth/2)) ;
-    if ( BrushSize < 0 ) {
-      BrushSize = -BrushSize;
-    }
+  if ( mousePressed && mouseX > (width - brushselectorwidth) && mouseX < width && mouseY < rainbowheight) {
+   float Xm=mouseX ;
+   float Xc=width - brushselectorwidth/2;
+   float Ym=mouseY;
+   float Yc=rainbowheight/2;
+   
+    float a= abs(Xm-Xc);
+    float b= abs(Ym-Yc);
+    float c= sqrt(a*a+b*b);
+    
+    BrushSize =  round(2*c) ;
+    
+    
   }
   // brush sample
   fill(0, 0, 99); //white in hsb
