@@ -66,7 +66,7 @@ void draw() {
     fill(c);                   
     rect(rectwidth*i, 0, rectwidth, rainbowheight );
     if (mouseX >= rectwidth*i && mouseX <= rectwidth*i + rectwidth && 
-      mouseY >= 0 && mouseY <= rainbowheight) {
+      mouseY >= 0 && mouseY <= rainbowheight && mousePressed) {
       BrushColor = c ;
     }
     i=i+1 ;
