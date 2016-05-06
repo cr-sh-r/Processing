@@ -41,8 +41,10 @@ void keyPressed()
 }
 void draw() {                       
   //print(focused + " " + mouseX + " " + mouseY + "\n");
+  //rainbow constant
+  int rainbowheight= 60;
 
-  if (mousePressed && WasFocused == true && focused == true && WasWasFocused == true) {
+  if (mousePressed && WasFocused == true && focused == true && WasWasFocused == true && mouseY> rainbowheight) {
     stroke(BrushColor);
     strokeWeight(BrushSize);
     line(mouseWasX, mouseWasY, mouseX, mouseY);
@@ -54,7 +56,6 @@ void draw() {
 
   //rainbow
   noStroke();
-  int rainbowheight= 60;
   int brushselectorwidth= 100;
   float numcolors = 255;
   colorMode(HSB, numcolors, 100, 100);
@@ -72,18 +73,19 @@ void draw() {
     i=i+1 ;
   }
   if ( mousePressed && mouseX > (width - brushselectorwidth) && mouseX < width && mouseY < rainbowheight) {
-   float Xm=mouseX ;
-   float Xc=width - brushselectorwidth/2;
-   float Ym=mouseY;
-   float Yc=rainbowheight/2;
-   
+    float Xm=mouseX ;
+    float Xc=width - brushselectorwidth/2;
+    float Ym=mouseY;
+    float Yc=rainbowheight/2;
+
     float a= abs(Xm-Xc);
     float b= abs(Ym-Yc);
     float c= sqrt(a*a+b*b);
-    
+
     BrushSize =  round(2*c) ;
-    
-    
+    if(BrushSize > rainbowheight){
+      BrushSize = rainbowheight;
+    }
   }
   // brush sample
   fill(0, 0, 99); //white in hsb
