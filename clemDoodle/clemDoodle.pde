@@ -83,16 +83,17 @@ void draw() {
     float c= sqrt(a*a+b*b);
 
     BrushSize =  round(2*c) ;
-    if(BrushSize > rainbowheight){
-      BrushSize = rainbowheight;
-    }
+    
+    
   }
   // brush sample
   fill(0, 0, 99); //white in hsb
   rect(width - brushselectorwidth, 0, brushselectorwidth, rainbowheight);
+  clip(width - brushselectorwidth, 0, brushselectorwidth, rainbowheight);
   fill(BrushColor);
   ellipse(width - brushselectorwidth/2, rainbowheight/2, BrushSize, BrushSize);
-
+  noClip();
+  
   colorMode(RGB, 255);
 
 
