@@ -5,6 +5,8 @@ int mouseWasX = 0 ;
 int mouseWasY = 0 ;
 boolean WasFocused = false;
 boolean WasWasFocused = false ;
+boolean DraggingBrushSize=false;
+boolean WasPressed=false;
 
 void setup() {
   size(700, 700);
@@ -39,12 +41,17 @@ void keyPressed()
     BrushColor = BackgroundColor  ;
   }
 }
-void draw() {                       
+void draw() {     
+  if (mousePressed==false) {
+    DraggingBrushSize=false;
+  }
   //print(focused + " " + mouseX + " " + mouseY + "\n");
   //rainbow constant
   int rainbowheight= 60;
 
-  if (mousePressed && WasFocused == true && focused == true && WasWasFocused == true && mouseY> rainbowheight) {
+  if (mousePressed && WasFocused == true && focused == true && 
+  WasWasFocused == true && DraggingBrushSize==false &&
+  mouseY> rainbowheight) {
     stroke(BrushColor);
     strokeWeight(BrushSize);
     line(mouseWasX, mouseWasY, mouseX, mouseY);
@@ -67,12 +74,21 @@ void draw() {
     fill(c);                   
     rect(rectwidth*i, 0, rectwidth, rainbowheight );
     if (mouseX >= rectwidth*i && mouseX <= rectwidth*i + rectwidth && 
-      mouseY >= 0 && mouseY <= rainbowheight && mousePressed) {
+      mouseY >= 0 && mouseY <= rainbowheight && mousePressed && 
+      DraggingBrushSize==false) {
       BrushColor = c ;
     }
     i=i+1 ;
   }
-  if ( mousePressed && mouseX > (width - brushselectorwidth) && mouseX < width && mouseY < rainbowheight) {
+  if ( mousePressed && mouseX > (width - brushselectorwidth) &&
+    mouseX < width && mouseY < rainbowheight) 
+  { 
+    if ( WasPressed == false) {
+      DraggingBrushSize= true;
+    }
+  }
+
+  if ( DraggingBrushSize==true) {
     float Xm=mouseX ;
     float Xc=width - brushselectorwidth/2;
     float Ym=mouseY;
@@ -83,9 +99,8 @@ void draw() {
     float c= sqrt(a*a+b*b);
 
     BrushSize =  round(2*c) ;
-    
-    
   }
+
   // brush sample
   fill(0, 0, 99); //white in hsb
   rect(width - brushselectorwidth, 0, brushselectorwidth, rainbowheight);
@@ -93,7 +108,7 @@ void draw() {
   fill(BrushColor);
   ellipse(width - brushselectorwidth/2, rainbowheight/2, BrushSize, BrushSize);
   noClip();
-  
+
   colorMode(RGB, 255);
 
 
@@ -101,7 +116,7 @@ void draw() {
   mouseWasY = mouseY ;
   WasWasFocused = WasFocused ;
   WasFocused = focused ;
-
+  WasPressed = mousePressed;
   //saveFrame("betterthanphotoshop-######.png");
 }
 
