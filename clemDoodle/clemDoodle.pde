@@ -7,6 +7,7 @@ boolean WasFocused = false;
 boolean WasWasFocused = false ;
 boolean DraggingBrushSize=false;
 boolean WasPressed=false;
+boolean DraggingColors=false;
 
 void setup() {
   size(700, 700);
@@ -44,13 +45,14 @@ void keyPressed()
 void draw() {     
   if (mousePressed==false) {
     DraggingBrushSize=false;
+    DraggingColors=false;
   }
   //print(focused + " " + mouseX + " " + mouseY + "\n");
   //rainbow constant
   int rainbowheight= 60;
 
   if (mousePressed && WasFocused == true && focused == true && 
-  WasWasFocused == true && DraggingBrushSize==false &&
+  WasWasFocused == true && DraggingBrushSize==false && DraggingColors ==false&&
   mouseY> rainbowheight) {
     stroke(BrushColor);
     strokeWeight(BrushSize);
@@ -77,6 +79,9 @@ void draw() {
       mouseY >= 0 && mouseY <= rainbowheight && mousePressed && 
       DraggingBrushSize==false) {
       BrushColor = c ;
+      if ( WasPressed == false){
+        DraggingColors=true;
+      }
     }
     i=i+1 ;
   }
