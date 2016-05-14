@@ -5,10 +5,10 @@ int mouseWasX = 0 ;
 int mouseWasY = 0 ;
 boolean WasFocused = false;
 boolean WasWasFocused = false ;
-boolean DraggingBrushSize=false;
 boolean WasPressed=false;
+boolean DraggingBrushSize=false;
 boolean DraggingColors=false;
-
+boolean DraggingPaintBrush=false;
 void setup() {
   size(700, 700);
   smooth();
@@ -42,10 +42,12 @@ void keyPressed()
     BrushColor = BackgroundColor  ;
   }
 }
+
 void draw() {     
   if (mousePressed==false) {
     DraggingBrushSize=false;
     DraggingColors=false;
+    DraggingPaintBrush=false;
   }
   //print(focused + " " + mouseX + " " + mouseY + "\n");
   //rainbow constant
@@ -57,7 +59,9 @@ void draw() {
     stroke(BrushColor);
     strokeWeight(BrushSize);
     line(mouseWasX, mouseWasY, mouseX, mouseY);
-
+    if(WasPressed==false){
+      DraggingPaintBrush=true;
+    }
     //ellipse(mouseX, mouseY, BrushSize, BrushSize);
   }
 
@@ -77,7 +81,7 @@ void draw() {
     rect(rectwidth*i, 0, rectwidth, rainbowheight );
     if (mouseX >= rectwidth*i && mouseX <= rectwidth*i + rectwidth && 
       mouseY >= 0 && mouseY <= rainbowheight && mousePressed && 
-      DraggingBrushSize==false) {
+      DraggingBrushSize==false && DraggingPaintBrush==false) {
       BrushColor = c ;
       if ( WasPressed == false){
         DraggingColors=true;
