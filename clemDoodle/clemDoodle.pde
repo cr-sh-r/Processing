@@ -9,6 +9,7 @@ boolean WasPressed=false;
 boolean DraggingBrushSize=false;
 boolean DraggingColors=false;
 boolean DraggingPaintBrush=false;
+
 void setup() {
   size(700, 700);
   smooth();
@@ -48,6 +49,7 @@ void draw() {
     DraggingBrushSize=false;
     DraggingColors=false;
     DraggingPaintBrush=false;
+    
   }
   //print(focused + " " + mouseX + " " + mouseY + "\n");
   //rainbow constant
@@ -127,5 +129,20 @@ void draw() {
   WasFocused = focused ;
   WasPressed = mousePressed;
   //saveFrame("betterthanphotoshop-######.png");
+  
+  
+  stroke(0);
+  strokeWeight(1);
+  fill(255);
+  float infosize=40;
+  
+  ellipse( height-infosize, height-infosize, infosize, infosize);
+  if( mouseX>= width-infosize-infosize/2 && mouseX<= width-infosize/2 
+  && mouseY >= height-infosize-infosize/2 && mouseY <= height-infosize/2){
+   
+  }
+
+  
+  
 }
 
