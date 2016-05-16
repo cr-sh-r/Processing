@@ -130,19 +130,16 @@ void draw() {
   WasPressed = mousePressed;
   //saveFrame("betterthanphotoshop-######.png");
   
-  
   stroke(0);
-  strokeWeight(1);
+  strokeWeight(2);
   fill(255);
   float infosize=40;
   
-  ellipse( height-infosize, height-infosize, infosize, infosize);
   if( mouseX>= width-infosize-infosize/2 && mouseX<= width-infosize/2 
   && mouseY >= height-infosize-infosize/2 && mouseY <= height-infosize/2){
-   
+    strokeWeight(6); 
   }
+  ellipse( height-infosize, height-infosize, infosize, infosize);
 
-  
-  
 }
 
