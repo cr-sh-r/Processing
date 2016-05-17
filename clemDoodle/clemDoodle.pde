@@ -44,24 +44,31 @@ void keyPressed()
   }
 }
 
-void draw() {     
+void draw() {   
+//constants  
+  float infosize=40;
+  int rainbowheight= 60;
+
   if (mousePressed==false) {
     DraggingBrushSize=false;
     DraggingColors=false;
     DraggingPaintBrush=false;
-    
   }
   //print(focused + " " + mouseX + " " + mouseY + "\n");
-  //rainbow constant
-  int rainbowheight= 60;
-
+  
+  boolean infoHovered=false;
+  if ( mouseX>= width-infosize-infosize/2 && mouseX<= width-infosize/2 
+    && mouseY >= height-infosize-infosize/2 && mouseY <= height-infosize/2) {
+    infoHovered=true;
+  }
+  
   if (mousePressed && WasFocused == true && focused == true && 
-  WasWasFocused == true && DraggingBrushSize==false && DraggingColors ==false&&
-  mouseY> rainbowheight) {
+    WasWasFocused == true && DraggingBrushSize==false &&  infoHovered==false && DraggingColors ==false&&
+    mouseY> rainbowheight) {
     stroke(BrushColor);
     strokeWeight(BrushSize);
     line(mouseWasX, mouseWasY, mouseX, mouseY);
-    if(WasPressed==false){
+    if (WasPressed==false) {
       DraggingPaintBrush=true;
     }
     //ellipse(mouseX, mouseY, BrushSize, BrushSize);
@@ -85,7 +92,7 @@ void draw() {
       mouseY >= 0 && mouseY <= rainbowheight && mousePressed && 
       DraggingBrushSize==false && DraggingPaintBrush==false) {
       BrushColor = c ;
-      if ( WasPressed == false){
+      if ( WasPressed == false) {
         DraggingColors=true;
       }
     }
@@ -122,24 +129,28 @@ void draw() {
 
   colorMode(RGB, 255);
 
-
+stroke(0);
+  strokeWeight(2);
+  fill(255);
+//circle hittest
+  if ( infoHovered==true ) {
+    strokeWeight(6);
+    if(WasPressed==false && mousePressed==true){
+      //print("hi");
+      javax.swing.JOptionPane.showMessageDialog(null, "Thanks for purchasing #betterthanphotoshop!"); 
+    }
+  }
+  ellipse( height-infosize, height-infosize, infosize, infosize);
+  
+  
+  
   mouseWasX = mouseX ;
   mouseWasY = mouseY ;
   WasWasFocused = WasFocused ;
   WasFocused = focused ;
   WasPressed = mousePressed;
   //saveFrame("betterthanphotoshop-######.png");
-  
-  stroke(0);
-  strokeWeight(2);
-  fill(255);
-  float infosize=40;
-  
-  if( mouseX>= width-infosize-infosize/2 && mouseX<= width-infosize/2 
-  && mouseY >= height-infosize-infosize/2 && mouseY <= height-infosize/2){
-    strokeWeight(6); 
-  }
-  ellipse( height-infosize, height-infosize, infosize, infosize);
 
+  
 }
 
