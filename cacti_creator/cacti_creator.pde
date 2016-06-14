@@ -1,5 +1,6 @@
 int menuHeight = 60;
 boolean hotbarColor = false;
+boolean mouseWasPressed=false;
 
 void setup() {
   size(800, 600);
@@ -13,16 +14,21 @@ void draw() {
 
   if (mouseX< width && mouseX >0 && mouseY < height && mouseY > height-menuHeight ) {
     hotbarColor=true;
+    if (mousePressed == true && mouseWasPressed== false) {
+      print("yo");
+    }
   } else {
     hotbarColor=false;
   }
 
   if (hotbarColor== true) {
-    fill(50, 50, 2);
+    fill(83, 103, 67);
   } else {
-    fill(255,255,255);
+    fill(255, 255, 255);
   }
 
   rect(0, height-menuHeight, width, menuHeight);
+  
+  mouseWasPressed=mousePressed;
 }
 
