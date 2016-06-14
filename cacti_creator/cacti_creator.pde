@@ -1,18 +1,18 @@
+int menuHeight = 50;
+
+
 void setup() {
-  size(700, 700);
-  background(10,60,10);
-}
-
-
-{
- 
-}
+  size(900, 600);
   
-void draw() {
   rectMode(CORNER);
+}
+
+
+void draw() {
+  background(10,60,10);
   fill(255,255,255);
-  rect(0,659,700,50);
+  rect(0,height-menuHeight,width,menuHeight);
   
-  
+  rect(mouseX, mouseY, 10,10);
   
 }
