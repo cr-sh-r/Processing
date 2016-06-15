@@ -28,7 +28,7 @@ void draw() {
   }
 
   rect(0, height-menuHeight, width, menuHeight);
-  
+
   mouseWasPressed=mousePressed;
 }
 
