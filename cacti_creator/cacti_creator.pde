@@ -11,10 +11,15 @@ void setup() {
 
 void draw() {
   background(10, 60, 10);
+  boolean mouseClicked = false ;
+  if (mousePressed == true && mouseWasPressed== false) {
+    mouseClicked = true;
+  }
+
 
   if (mouseX< width && mouseX >0 && mouseY < height && mouseY > height-menuHeight ) {
     hotbarColor=true;
-    if (mousePressed == true && mouseWasPressed== false) {
+    if (mouseClicked == true) {
       print("yo");
     }
   } else {
