@@ -33,11 +33,30 @@ void draw() {
     fill(255, 255, 255);
   } else if (hotbarColor == 1) {
     fill(83, 103, 67);
-  } else if (hotbarColor== 2){
-    fill(53, 98,17);
+  } else if (hotbarColor== 2) {
+    fill(53, 98, 17);
   }
 
   rect(0, height-menuHeight, width, menuHeight);
+
+  float numIcons = 7;
+  float iconWidth = width/numIcons ;
+  int icon = 0 ;
+  while(icon < numIcons ) {
+    float x = iconWidth*icon ;
+    float y = height-menuHeight ;
+    
+    rect(x,y,iconWidth,menuHeight);
+    
+    icon = icon + 1;
+  }
+
+
+
+
+
+
+
 
   mouseWasPressed=mousePressed;
 }
