@@ -1,5 +1,4 @@
 int menuHeight = 60;
-boolean hotbarColor = false;
 boolean mouseWasPressed=false;
 
 void setup() {
@@ -11,25 +10,31 @@ void setup() {
 
 void draw() {
   background(10, 60, 10);
-  boolean mouseClicked = false ;
-  if (mousePressed == true && mouseWasPressed== false) {
-    mouseClicked = true;
-  }
+  boolean mouseClicked = (mousePressed == true && mouseWasPressed== false);
+  boolean mouseUpClicked = (mousePressed == false && mouseWasPressed== true);
 
+  int hotbarColor = 0;
 
   if (mouseX< width && mouseX >0 && mouseY < height && mouseY > height-menuHeight ) {
-    hotbarColor=true;
-    if (mouseClicked == true) {
+    if (mousePressed == true) {
+      hotbarColor=2;
+    } else {
+      hotbarColor=1;
+    }      
+
+
+
+    if (mouseUpClicked == true) {
       print("yo");
     }
-  } else {
-    hotbarColor=false;
-  }
+  } 
 
-  if (hotbarColor== true) {
-    fill(83, 103, 67);
-  } else {
+  if (hotbarColor== 0) {
     fill(255, 255, 255);
+  } else if (hotbarColor == 1) {
+    fill(83, 103, 67);
+  } else if (hotbarColor== 2){
+    fill(53, 98,17);
   }
 
   rect(0, height-menuHeight, width, menuHeight);
