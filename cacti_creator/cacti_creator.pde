@@ -13,12 +13,7 @@ void draw() {
   boolean mouseClicked = (mousePressed == true && mouseWasPressed== false);
   boolean mouseUpClicked = (mousePressed == false && mouseWasPressed== true);
 
-  
-
-  
-
-  
-fill(255,255,255);
+  fill(255, 255, 255);
   rect(0, height-menuHeight, width, menuHeight);
 
   float numIcons = 7;
@@ -44,8 +39,17 @@ fill(255,255,255);
       // not hovered
       fill(255, 255, 255);
     }
-
-    rect(x, y, w, h);
+   
+    
+    
+    float bw = w/6;
+    float bh =h/6;
+    float xi = x+bw;
+    float yi= y+bh;
+    float wi = w-2*bw;
+    float hi = h-2*bh;
+    
+    rect(xi, yi, wi, hi);
 
     icon = icon + 1;
   }
