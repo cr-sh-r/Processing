@@ -25,6 +25,7 @@ void draw() {
     float w = iconboxWidth;
     float h = menuHeight;
 
+    boolean downButton = false;
     if (mouseX < x+w && mouseX > x && mouseY < y+h && mouseY > y ) {
       // hovered
       if (mouseUpClicked == true) {
@@ -32,6 +33,7 @@ void draw() {
       }
       if (mousePressed==true) {
         fill(53, 98, 17);
+        downButton = true;
       } else {
         fill(83, 103, 67);
       }
@@ -39,16 +41,18 @@ void draw() {
       // not hovered
       fill(255, 255, 255);
     }
-   
     
-    
+    float buttonYOffset = 0;
+    if (downButton==true) {
+      buttonYOffset=2;
+    }
     float bw = w/6;
     float bh =h/6;
     float xi = x+bw;
-    float yi= y+bh;
+    float yi= y+bh+buttonYOffset;
     float wi = w-2*bw;
     float hi = h-2*bh;
-    
+
     rect(xi, yi, wi, hi);
 
     icon = icon + 1;
