@@ -29,11 +29,11 @@ void draw() {
   int i = 0;
   while (i < objects.size ()) {
     CactusObject obj = objects.get(i);
-    
+
     rect(obj.x, obj.y, obj.w, obj.h);
-    
+
     String s = "hi" + obj.id;
-    text(s,obj.x,obj.y);
+    text(s, obj.x, obj.y);
 
     i = i + 1;
   }
@@ -52,15 +52,25 @@ void draw() {
       // hovered
       if (mouseUpClicked == true) {
         print(icon+"\n");
-        
+
         CactusObject o = new CactusObject();
-        o.x = random(0,width);
-        o.y = random(0,height-menuHeight-20);
-        o.w = 20;
-        o.h = 20;
+        o.x = random(0, width);
+        o.y = random(0, height-menuHeight-20);
+        if (icon==0) {
+          o.w = 20;
+          o.h = 20;
+        } else if (icon==1) {
+          o.w = 30;
+          o.h = 30;
+        } else if (icon==2) {
+          o.w = 40;
+          o.h = 60;
+        } else {
+          o.w = 200;
+          o.h = 200;
+        }
         o.id = icon;
         objects.add(o);
-        
       }
       if (mousePressed==true) {
         fill(53, 98, 17);
@@ -88,13 +98,6 @@ void draw() {
 
     icon = icon + 1;
   }
-
-
-
-
-
-
-
 
   mouseWasPressed=mousePressed;
 }
