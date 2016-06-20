@@ -26,6 +26,7 @@ void draw() {
   fill(255, 255, 255);
   rect(0, height-menuHeight, width, menuHeight);
 
+  // main objects loop
   int i = 0;
   while (i < objects.size ()) {
     CactusObject obj = objects.get(i);
@@ -38,6 +39,7 @@ void draw() {
     i = i + 1;
   }
 
+  // buttons loop
   float numIcons = 7;
   float iconboxWidth = width/numIcons ;
   int icon = 0 ;
