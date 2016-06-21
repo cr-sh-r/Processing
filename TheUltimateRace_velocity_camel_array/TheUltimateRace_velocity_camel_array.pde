@@ -79,7 +79,7 @@ void setup()
   SetValues();
   size(600, 600);
   ellipseMode(CENTER);
-  tyler = loadImage("Tyler oakley flower crown.jpg");
+  tyler = loadImage("CACTI.png");
 }
 
 void draw()
