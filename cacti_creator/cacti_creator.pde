@@ -94,8 +94,24 @@ void draw() {
         objects.add(o);
       }
       if (mousePressed==true) {
-        fill(53, 98, 17);
+        //fill(53, 98, 17);
         downButton = true;
+        
+        if (icon==0) {
+         fill(255, 0, 0);
+        } else if (icon==1) {
+          fill(255,81,0);
+        } else if (icon==2) {
+          fill(255,234,0);
+        } else if (icon==3) {
+          fill(118,255,0);
+        }else if(icon==4){
+          fill(0,249,255);
+        }else if(icon==5){
+          fill(0,30,255);
+        }else if(icon==6){
+        fill(207,0,255);
+        }
         
       } else {
         fill(83, 103, 67);
