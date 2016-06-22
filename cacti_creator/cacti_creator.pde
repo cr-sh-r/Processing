@@ -37,13 +37,13 @@ void draw() {
     else if(obj.id==1){
       fill(255,81,0);
     }else if(obj.id==2){
-      fill(255,0,0);
-    }else if(obj.id==3){
       fill(255,234,0);
+    }else if(obj.id==3){
+      fill(118,255,0);
     }else if(obj.id==4){
-     fill(118,255,0);
+     fill(0,249,255);
     }else if(obj.id==5){
-      fill(0,249,255);
+      fill(0,30,255);
     }else if(obj.id==6){
       fill(207,0,255);
     }
@@ -96,6 +96,7 @@ void draw() {
       if (mousePressed==true) {
         fill(53, 98, 17);
         downButton = true;
+        
       } else {
         fill(83, 103, 67);
       }
