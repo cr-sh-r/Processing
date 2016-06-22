@@ -114,11 +114,39 @@ void draw() {
         }
         
       } else {
-        fill(83, 103, 67);
+         if (icon==0) {
+         fill(55, 0, 0);
+        } else if (icon==1) {
+          fill(255,1,0);
+        } else if (icon==2) {
+          fill(55,34,0);
+        } else if (icon==3) {
+          fill(18,255,0);
+        }else if(icon==4){
+          fill(28,29,60);
+        }else if(icon==5){
+          fill(0,30,55);
+        }else if(icon==6){
+        fill(27,0,55);
+        }
       }
     } else {
       // not hovered
-      fill(255, 255, 255);
+       if (icon==0) {
+         fill(255, 40, 30);
+        } else if (icon==1) {
+          fill(255,81,20);
+        } else if (icon==2) {
+          fill(255,234,45);
+        } else if (icon==3) {
+          fill(118,255,60);
+        }else if(icon==4){
+          fill(48,249,255);
+        }else if(icon==5){
+          fill(56,30,255);
+        }else if(icon==6){
+        fill(207,57,255);
+        }
     }
 
     float buttonYOffset = 0;
