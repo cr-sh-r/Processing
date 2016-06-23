@@ -1,5 +1,6 @@
 int menuHeight = 60;
 boolean mouseWasPressed=false;
+PImage CactiBase ;
 
 class CactusObject {
   float x;
@@ -12,6 +13,11 @@ class CactusObject {
 ArrayList<CactusObject> objects = new ArrayList<CactusObject>();
 
 void setup() {
+  
+  size(600, 600);
+  ellipseMode(CENTER);
+  CactiBase = loadImage("CACTI.png");
+  
   size(800, 600);
   rectMode(CORNER);
 }
@@ -19,6 +25,7 @@ void setup() {
 
 void draw() {
   background(10, 60, 10);
+  
   boolean mouseClicked = (mousePressed == true && mouseWasPressed== false);
   boolean mouseUpClicked = (mousePressed == false && mouseWasPressed== true);
 
@@ -47,8 +54,11 @@ void draw() {
     }else if(obj.id==6){
       fill(207,0,255);
     }
+    if (obj.id==0) {
+         image(CactiBase,obj.x, obj.y,70 , 70 );
+        }else {
     rect(obj.x, obj.y, obj.w, obj.h);
-
+        }
     String s = "hi" + obj.id;
     text(s, obj.x, obj.y);
 
