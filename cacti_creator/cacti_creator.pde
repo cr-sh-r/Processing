@@ -1,6 +1,7 @@
 int menuHeight = 60;
 boolean mouseWasPressed=false;
 int numIcons = 5;
+int frame = 0;
 
 color[] iconNotHoveredColors = { 
   color(255, 40, 30), // icon 0
@@ -73,15 +74,16 @@ void draw() {
     int i = 0;
     while (i < objects.size ()) {
       CactusObject obj = objects.get(i);
-      if (layer==obj.id) {
-           image(obj.image, obj.x, obj.y, obj.w, obj.h );
+      if (layer == obj.id) {
+        image(obj.image, obj.x, obj.y, obj.w, obj.h );
+        
+        //String s = "hi" + obj.id;
+        //text(s, obj.x, obj.y);
       }
-
-      //String s = "hi" + obj.id;
-      //text(s, obj.x, obj.y);
 
       i = i + 1;
     }
+    
     layer = layer + 1;
   }
   // buttons loop
@@ -101,8 +103,8 @@ void draw() {
         print(icon+"\n");
 
         CactusObject o = new CactusObject();
-        o.x = 250;       //random(0, width);
-        o.y = 70;        //random(0, height-menuHeight-20);
+        o.x = 250 ;       //random(0, width);
+        o.y = 70 ;        //random(0, height-menuHeight-20);
         if (icon==0) {
           o.image = background1;
         } else if (icon==1) {
@@ -151,6 +153,9 @@ void draw() {
 
     icon = icon + 1;
   }
+  
+  //text(frame,mouseX,mouseY);
+  //frame = frame + 1;
 
   mouseWasPressed=mousePressed;
 }
