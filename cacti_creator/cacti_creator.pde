@@ -3,12 +3,20 @@ boolean mouseWasPressed=false;
 int numIcons = 5;
 
 color[] iconNotHoveredColors = { 
-  color(255, 40, 30),  // icon 0
-  color(255, 81, 20),  // icon 1
+  color(255, 40, 30), // icon 0
+  color(255, 81, 20), // icon 1
   color(255, 234, 45), // icon 2
   color(118, 255, 60), // icon 3
   color(48, 249, 255), // icon 4
 };
+color[] iconMouseDownColors = {
+  color(255, 0, 0), 
+  color(255, 81, 0), 
+  color(255, 234, 0), 
+  color(118, 255, 0), 
+  color(0, 249, 255),
+};
+
 
 PImage base1 ;
 PImage flower1 ;
@@ -126,21 +134,8 @@ void draw() {
         //fill(53, 98, 17);
         downButton = true;
 
-        if (icon==0) {
-          fill(255, 0, 0);
-        } else if (icon==1) {
-          fill(255, 81, 0);
-        } else if (icon==2) {
-          fill(255, 234, 0);
-        } else if (icon==3) {
-          fill(118, 255, 0);
-        } else if (icon==4) {
-          fill(0, 249, 255);
-        } else if (icon==5) {
-          fill(0, 30, 255);
-        } else if (icon==6) {
-          fill(207, 0, 255);
-        }
+        fill(iconMouseDownColors[icon]);
+        
       } else {
         // mouse up
         if (icon==0) {
