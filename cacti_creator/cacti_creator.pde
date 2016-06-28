@@ -1,7 +1,10 @@
+import processing.sound.*;
+
 int menuHeight = 60;
 boolean mouseWasPressed=false;
 int numIcons = 5;
 int frame = 0;
+SoundFile pushSound;
 
 color[] iconNotHoveredColors = { 
   color(255, 40, 30), // icon 0
@@ -15,14 +18,14 @@ color[] iconMouseDownColors = {
   color(255, 81, 0), 
   color(255, 234, 0), 
   color(118, 255, 0), 
-  color(0, 249, 255),
+  color(0, 249, 255), 
 };
 color[] iconMouseUpColors = {
   color(55, 0, 0), 
   color(255, 1, 0), 
   color(55, 34, 0), 
   color(18, 255, 0), 
-  color(28, 29, 60),
+  color(28, 29, 60), 
 };
 
 PImage base1 ;
@@ -44,16 +47,15 @@ class CactusObject {
 ArrayList<CactusObject> objects = new ArrayList<CactusObject>();
 
 void setup() {
-
-  size(600, 600);
+  size(800, 600);
   ellipseMode(CENTER);
   base1 = loadImage("CACTI.png");
   flower1 = loadImage("flower1.png");
   texture1 = loadImage("texture1.png");
   pot1 = loadImage("pot1.png");
   background1 = loadImage("background1.png");
-  size(800, 600);
   rectMode(CORNER);
+  pushSound = new SoundFile(this, "button.wav");
 }
 
 
@@ -76,14 +78,14 @@ void draw() {
       CactusObject obj = objects.get(i);
       if (layer == obj.id) {
         image(obj.image, obj.x, obj.y, obj.w, obj.h );
-        
+
         //String s = "hi" + obj.id;
         //text(s, obj.x, obj.y);
       }
 
       i = i + 1;
     }
-    
+
     layer = layer + 1;
   }
   // buttons loop
@@ -101,7 +103,7 @@ void draw() {
       // hovered
       if (mouseUpClicked == true) {
         print(icon+"\n");
-
+        pushSound.play();
         CactusObject o = new CactusObject();
         o.x = 250 ;       //random(0, width);
         o.y = 70 ;        //random(0, height-menuHeight-20);
@@ -153,10 +155,9 @@ void draw() {
 
     icon = icon + 1;
   }
-  
+
   //text(frame,mouseX,mouseY);
   //frame = frame + 1;
 
   mouseWasPressed=mousePressed;
 }
-
