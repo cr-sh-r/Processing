@@ -16,7 +16,13 @@ color[] iconMouseDownColors = {
   color(118, 255, 0), 
   color(0, 249, 255),
 };
-
+color[] iconMouseUpColors = {
+  color(55, 0, 0),
+  color(255, 1, 0),
+  color(55, 34, 0),
+  color(18, 255, 0),
+  color(28, 29, 60),
+};
 
 PImage base1 ;
 PImage flower1 ;
@@ -135,24 +141,9 @@ void draw() {
         downButton = true;
 
         fill(iconMouseDownColors[icon]);
-        
       } else {
         // mouse up
-        if (icon==0) {
-          fill(55, 0, 0);
-        } else if (icon==1) {
-          fill(255, 1, 0);
-        } else if (icon==2) {
-          fill(55, 34, 0);
-        } else if (icon==3) {
-          fill(18, 255, 0);
-        } else if (icon==4) {
-          fill(28, 29, 60);
-        } else if (icon==5) {
-          fill(0, 30, 55);
-        } else if (icon==6) {
-          fill(27, 0, 55);
-        }
+       fill(iconMouseUpColors[icon]);
       }
     } else {
       // not hovered
