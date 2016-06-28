@@ -67,18 +67,23 @@ void draw() {
   rect(0, height-menuHeight, width, menuHeight);
 
   // main objects loop
-  int i = 0;
-  while (i < objects.size ()) {
-    CactusObject obj = objects.get(i);
-    
-    image(obj.image, obj.x, obj.y, obj.w, obj.h );
+  int layer =0;
+  while (layer< numIcons) {
 
-    //String s = "hi" + obj.id;
-    //text(s, obj.x, obj.y);
+    int i = 0;
+    while (i < objects.size ()) {
+      CactusObject obj = objects.get(i);
+      if (layer==obj.id) {
+           image(obj.image, obj.x, obj.y, obj.w, obj.h );
+      }
 
-    i = i + 1;
+      //String s = "hi" + obj.id;
+      //text(s, obj.x, obj.y);
+
+      i = i + 1;
+    }
+    layer = layer + 1;
   }
-
   // buttons loop
 
   float iconboxWidth = ((float)width)/numIcons ;
