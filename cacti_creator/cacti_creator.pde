@@ -1,11 +1,21 @@
 int menuHeight = 60;
 boolean mouseWasPressed=false;
+int numIcons = 5;
+
+color[] iconNotHoveredColors = { 
+  color(255, 40, 30),  // icon 0
+  color(255, 81, 20),  // icon 1
+  color(255, 234, 45), // icon 2
+  color(118, 255, 60), // icon 3
+  color(48, 249, 255), // icon 4
+};
 
 PImage base1 ;
 PImage flower1 ;
 PImage texture1 ;
 PImage pot1 ;
 PImage background1 ;
+
 class CactusObject {
   float x;
   float y;
@@ -68,14 +78,14 @@ void draw() {
     } else {
       rect(obj.x, obj.y, obj.w, obj.h);
     }
-    String s = "hi" + obj.id;
-    text(s, obj.x, obj.y);
+    //String s = "hi" + obj.id;
+    //text(s, obj.x, obj.y);
 
     i = i + 1;
   }
 
   // buttons loop
-  int numIcons = 5;
+
   float iconboxWidth = ((float)width)/numIcons ;
   int icon = 0 ;
   while (icon < numIcons ) {
@@ -110,7 +120,9 @@ void draw() {
         o.id = icon;
         objects.add(o);
       }
+
       if (mousePressed==true) {
+        // mouse down
         //fill(53, 98, 17);
         downButton = true;
 
@@ -130,6 +142,7 @@ void draw() {
           fill(207, 0, 255);
         }
       } else {
+        // mouse up
         if (icon==0) {
           fill(55, 0, 0);
         } else if (icon==1) {
@@ -148,21 +161,7 @@ void draw() {
       }
     } else {
       // not hovered
-      if (icon==0) {
-        fill(255, 40, 30);
-      } else if (icon==1) {
-        fill(255, 81, 20);
-      } else if (icon==2) {
-        fill(255, 234, 45);
-      } else if (icon==3) {
-        fill(118, 255, 60);
-      } else if (icon==4) {
-        fill(48, 249, 255);
-      } else if (icon==5) {
-        fill(56, 30, 255);
-      } else if (icon==6) {
-        fill(207, 57, 255);
-      }
+      fill(iconNotHoveredColors[icon]);
     }
 
     float buttonYOffset = 0;
