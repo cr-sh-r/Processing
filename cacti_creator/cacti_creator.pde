@@ -2,7 +2,7 @@ import processing.sound.*;
 
 int menuHeight = 60;
 boolean mouseWasPressed=false;
-int numIcons = 5;
+int numIcons = 6;
 int frame = 0;
 SoundFile pushSound;
 
@@ -12,6 +12,7 @@ color[] iconNotHoveredColors = {
   color(255, 234, 45), // icon 2
   color(118, 255, 60), // icon 3
   color(48, 249, 255), // icon 4
+  color(255, 255, 255), // icon 5
 };
 color[] iconMouseDownColors = {
   color(255, 0, 0), 
@@ -19,6 +20,7 @@ color[] iconMouseDownColors = {
   color(255, 234, 0), 
   color(118, 255, 0), 
   color(0, 249, 255), 
+  color(0, 0, 0), 
 };
 color[] iconMouseUpColors = {
   color(55, 0, 0), 
@@ -26,6 +28,7 @@ color[] iconMouseUpColors = {
   color(55, 34, 0), 
   color(18, 255, 0), 
   color(28, 29, 60), 
+  color(100, 100, 100), 
 };
 
 PImage base1 ;
@@ -104,25 +107,30 @@ void draw() {
       if (mouseUpClicked == true) {
         print(icon+"\n");
         pushSound.play();
-        CactusObject o = new CactusObject();
-        o.x = 250 ;       //random(0, width);
-        o.y = 70 ;        //random(0, height-menuHeight-20);
-        if (icon==0) {
-          o.image = background1;
-        } else if (icon==1) {
-          o.image = base1;
-        } else if (icon==2) {
-          o.image = pot1;
-        } else if (icon==3) {
-          o.image = texture1;
-        } else if (icon==4) {
-          o.image = flower1;
-        }
-        o.w =300;
-        o.h =300;
+        if (icon==5) {
+          objects.clear();
+        } else {
+          CactusObject o = new CactusObject();
+          o.x = 250 ;       //random(0, width);
+          o.y = 70 ;        //random(0, height-menuHeight-20);
+          if (icon==0) {
+            o.image = background1;
+          } else if (icon==1) {
+            o.image = base1;
+          } else if (icon==2) {
+            o.image = pot1;
+          } else if (icon==3) {
+            o.image = texture1;
+          } else if (icon==4) {
+            o.image = flower1;
+          }
 
-        o.id = icon;
-        objects.add(o);
+          o.w =300;
+          o.h =300;
+
+          o.id = icon;
+          objects.add(o);
+        }
       }
 
       if (mousePressed==true) {
