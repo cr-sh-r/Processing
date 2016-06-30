@@ -33,6 +33,8 @@ color[] iconMouseUpColors = {
 
 PImage base1 ;
 PImage flower1 ;
+PImage flower2;
+PImage flower3;
 PImage texture1 ;
 PImage pot1 ;
 PImage background1 ;
@@ -54,6 +56,8 @@ void setup() {
   ellipseMode(CENTER);
   base1 = loadImage("CACTI.png");
   flower1 = loadImage("flower1.png");
+  flower2 = loadImage("flower2.png");
+  flower3 = loadImage("flower3.png");
   texture1 = loadImage("texture1.png");
   pot1 = loadImage("pot1.png");
   background1 = loadImage("background1.png");
@@ -122,7 +126,14 @@ void draw() {
           } else if (icon==3) {
             o.image = texture1;
           } else if (icon==4) {
-            o.image = flower1;
+            int flowerchooser = (int)random(1,3.999999999999999999999999);
+            if (flowerchooser==1) {
+              o.image = flower1;
+            } else if (flowerchooser==2) {
+              o.image = flower2;
+            } else if (flowerchooser==3) {
+              o.image = flower3;
+            }
           }
 
           o.w =300;
