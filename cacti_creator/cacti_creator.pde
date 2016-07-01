@@ -1,6 +1,6 @@
 import processing.sound.*;
-
-int menuHeight = 60;
+int menushown = -1;
+int buttonsHeight = 60;
 boolean mouseWasPressed=false;
 int numIcons = 6;
 int frame = 0;
@@ -84,7 +84,7 @@ void draw() {
 
 
   fill(255, 255, 255);
-  rect(0, height-menuHeight, width, menuHeight);
+  rect(0, height-buttonsHeight, width, buttonsHeight);
 
   // main objects loop
   int layer =0;
@@ -111,13 +111,16 @@ void draw() {
   int icon = 0 ;
   while (icon < numIcons ) {
     float x = iconboxWidth*icon ;
-    float y = height-menuHeight ;
+    float y = height-buttonsHeight ;
     float w = iconboxWidth;
-    float h = menuHeight;
+    float h = buttonsHeight;
 
     boolean downButton = false;
     if (mouseX < x+w && mouseX > x && mouseY < y+h && mouseY > y ) {
       // hovered
+      if (mousePressed==true) {
+        menushown=icon;
+      } 
       if (mouseUpClicked == true) {
         print(icon+"\n");
         pushSound.play();
@@ -126,7 +129,7 @@ void draw() {
         } else {
           CactusObject o = new CactusObject();
           o.x = 250 ;       //random(0, width);
-          o.y = 70 ;        //random(0, height-menuHeight-20);
+          o.y = 70 ;        //random(0, height-buttonsHeight-20);
           if (icon==0) {
             int backgroundchooser = (int)random(0, backgrounds.length-0.0000000001);
             o.image = flowers[backgroundchooser];
@@ -179,11 +182,18 @@ void draw() {
 
     rect(xi, yi, wi, hi);
 
+    if (menushown==icon) {
+      rect(xi, y-10, wi, h-400);
+    }
+
     icon = icon + 1;
   }
 
-  //text(frame,mouseX,mouseY);
-  //frame = frame + 1;
 
+
+  frame = frame + 1;
+  if (mousePressed==false) {
+    menushown=-1;
+  }
   mouseWasPressed=mousePressed;
 }
