@@ -36,7 +36,8 @@ PImage[] flowers ;
 
 PImage texture1 ;
 PImage pot1 ;
-PImage background1 ;
+
+PImage[] backgrounds ;
 
 
 class CactusObject {
@@ -62,7 +63,9 @@ void setup() {
 
   texture1 = loadImage("texture1.png");
   pot1 = loadImage("pot1.png");
-  background1 = loadImage("background1.png");
+  backgrounds = new PImage[2];
+  backgrounds[0] = loadImage("background1.png");
+  backgrounds[1] = loadImage("background2.png");
   rectMode(CORNER);
   pushSound = new SoundFile(this, "button.wav");
 }
@@ -120,7 +123,9 @@ void draw() {
           o.x = 250 ;       //random(0, width);
           o.y = 70 ;        //random(0, height-menuHeight-20);
           if (icon==0) {
-            o.image = background1;
+            int backgroundchooser = (int)random(0, backgrounds.length-0.0000000001);
+            o.image = flowers[backgroundchooser];
+            o.image = backgrounds[backgroundchooser];
           } else if (icon==1) {
             o.image = base1;
           } else if (icon==2) {
