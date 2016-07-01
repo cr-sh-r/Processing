@@ -35,7 +35,7 @@ PImage base1 ;
 PImage[] flowers ;
 
 PImage texture1 ;
-PImage pot1 ;
+PImage[] pots ;
 
 PImage[] backgrounds ;
 
@@ -62,10 +62,15 @@ void setup() {
   flowers[2] = loadImage("flower3.png");
 
   texture1 = loadImage("texture1.png");
-  pot1 = loadImage("pot1.png");
+
+  pots = new PImage[2];
+  pots[0] = loadImage("pot1.png");
+  pots[1] = loadImage("pot2.png");
+
   backgrounds = new PImage[2];
   backgrounds[0] = loadImage("background1.png");
   backgrounds[1] = loadImage("background2.png");
+
   rectMode(CORNER);
   pushSound = new SoundFile(this, "button.wav");
 }
@@ -129,7 +134,8 @@ void draw() {
           } else if (icon==1) {
             o.image = base1;
           } else if (icon==2) {
-            o.image = pot1;
+            int potchooser = (int)random(0, pots.length-0.0000000001);
+            o.image = pots[potchooser];
           } else if (icon==3) {
             o.image = texture1;
           } else if (icon==4) {
