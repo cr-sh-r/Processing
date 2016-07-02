@@ -4,6 +4,7 @@ int buttonsHeight = 60;
 boolean mouseWasPressed=false;
 int numIcons = 6;
 int frame = 0;
+int menugap = 10;
 SoundFile pushSound;
 
 color[] iconNotHoveredColors = { 
@@ -118,10 +119,10 @@ void draw() {
     boolean downButton = false;
     if (mouseX < x+w && mouseX > x && mouseY < y+h && mouseY > y ) {
       // hovered
-      if (mousePressed==true) {
+      if (mouseClicked==true) {
         menushown=icon;
       } 
-      if (mouseUpClicked == true) {
+      if (mouseUpClicked == true && menushown==icon) {
         print(icon+"\n");
         pushSound.play();
         if (icon==5) {
@@ -156,10 +157,12 @@ void draw() {
 
       if (mousePressed==true) {
         // mouse down
-        //fill(53, 98, 17);
-        downButton = true;
-
-        fill(iconMouseDownColors[icon]);
+        if (menushown==icon) {
+          downButton = true;
+          fill(iconMouseDownColors[icon]);
+        } else {
+          fill(iconNotHoveredColors[icon]);
+        }
       } else {
         // mouse up
         fill(iconMouseUpColors[icon]);
@@ -183,7 +186,8 @@ void draw() {
     rect(xi, yi, wi, hi);
 
     if (menushown==icon) {
-      rect(xi, y-10, wi, h-400);
+      float menuheight=300;
+      rect(xi, y-menugap-menuheight, wi, menuheight);
     }
 
     icon = icon + 1;
