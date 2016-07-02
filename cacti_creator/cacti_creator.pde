@@ -129,8 +129,12 @@ void draw() {
           objects.clear();
         } else {
           CactusObject o = new CactusObject();
+          
           o.x = 250 ;       //random(0, width);
           o.y = 70 ;        //random(0, height-buttonsHeight-20);
+          o.w =300;
+          o.h =300;
+          
           if (icon==0) {
             int backgroundchooser = (int)random(0, backgrounds.length-0.0000000001);
             o.image = flowers[backgroundchooser];
@@ -146,9 +150,6 @@ void draw() {
             int flowerchooser = (int)random(0, flowers.length-0.0000000001);
             o.image = flowers[flowerchooser];
           }
-
-          o.w =300;
-          o.h =300;
 
           o.id = icon;
           objects.add(o);
@@ -195,6 +196,12 @@ void draw() {
         while (menuButtonIndex<flowers.length) {
           rect(xi, menuButtonY, wi, menuButtonHeight);
           image(flowers[menuButtonIndex], xi, menuButtonY, wi, menuButtonHeight);
+
+
+          // hit test rect with mouse up clicked
+          // create correct flower object
+
+
           menuButtonY = menuButtonY - menugap - menuButtonHeight;
           menuButtonIndex = menuButtonIndex + 1 ;
         }
