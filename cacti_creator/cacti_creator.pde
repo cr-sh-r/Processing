@@ -8,12 +8,12 @@ int menugap = 10;
 SoundFile pushSound;
 
 color[] iconNotHoveredColors = { 
-  color(255, 40, 30), // icon 0
-  color(255, 81, 20), // icon 1
-  color(255, 234, 45), // icon 2
-  color(118, 255, 60), // icon 3
-  color(48, 249, 255), // icon 4
-  color(255, 255, 255), // icon 5
+  color(255, 40, 30), // icon 0 background
+  color(255, 81, 20), // icon 1 body
+  color(255, 234, 45), // icon 2 pot
+  color(118, 255, 60), // icon 3 texture
+  color(48, 249, 255), // icon 4 flowers
+  color(255, 255, 255), // icon 5 tools
 };
 color[] iconMouseDownColors = {
   color(255, 0, 0), 
@@ -186,8 +186,22 @@ void draw() {
     rect(xi, yi, wi, hi);
 
     if (menushown==icon) {
-      float menuheight=300;
-      rect(xi, y-menugap-menuheight, wi, menuheight);
+      //using menu
+      if (icon==4) { // flowers
+        float menuButtonHeight = hi;
+        float menuButtonY= y-menugap-menuButtonHeight;
+
+        int menuButtonIndex= 0;
+        while (menuButtonIndex<flowers.length) {
+          rect(xi, menuButtonY, wi, menuButtonHeight);
+          image(flowers[menuButtonIndex], xi, menuButtonY, wi, menuButtonHeight);
+          menuButtonY = menuButtonY - menugap - menuButtonHeight;
+          menuButtonIndex = menuButtonIndex + 1 ;
+        }
+      } else {
+        float menuheight=300;
+        rect(xi, y-menugap-menuheight, wi, menuheight);
+      }
     }
 
     icon = icon + 1;
