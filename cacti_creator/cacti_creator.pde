@@ -108,12 +108,12 @@ void draw() {
   }
   // buttons loop
 
-  float iconboxWidth = ((float)width)/numIcons ;
+  float iconBoxWidth = ((float)width)/numIcons ;
   int icon = 0 ;
   while (icon < numIcons ) {
-    float x = iconboxWidth*icon ;
+    float x = iconBoxWidth*icon ;
     float y = height-dockHeight ;
-    float w = iconboxWidth;
+    float w = iconBoxWidth;
     float h = dockHeight;
 
     boolean downButton = false;
@@ -136,19 +136,19 @@ void draw() {
           o.h =300;
           
           if (icon==0) {
-            int backgroundchooser = (int)random(0, backgrounds.length-0.0000000001);
-            o.image = flowers[backgroundchooser];
-            o.image = backgrounds[backgroundchooser];
+            int backgroundChooser = (int)random(0, backgrounds.length-0.0000000001);
+            o.image = flowers[backgroundChooser];
+            o.image = backgrounds[backgroundChooser];
           } else if (icon==1) {
             o.image = base1;
           } else if (icon==2) {
-            int potchooser = (int)random(0, pots.length-0.0000000001);
-            o.image = pots[potchooser];
+            int potChooser = (int)random(0, pots.length-0.0000000001);
+            o.image = pots[potChooser];
           } else if (icon==3) {
             o.image = texture1;
           } else if (icon==4) {
-            int flowerchooser = (int)random(0, flowers.length-0.0000000001);
-            o.image = flowers[flowerchooser];
+            int flowerChooser = (int)random(0, flowers.length-0.0000000001);
+            o.image = flowers[flowerChooser];
           }
 
           o.id = icon;
