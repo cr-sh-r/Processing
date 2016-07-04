@@ -1,10 +1,10 @@
 import processing.sound.*;
-int menushown = -1;
-int buttonsHeight = 60;
+int menuShown = -1;
+int dockHeight = 60;
 boolean mouseWasPressed=false;
 int numIcons = 6;
 int frame = 0;
-int menugap = 10;
+int menuGap = 10;
 SoundFile pushSound;
 
 color[] iconNotHoveredColors = { 
@@ -85,7 +85,7 @@ void draw() {
 
 
   fill(255, 255, 255);
-  rect(0, height-buttonsHeight, width, buttonsHeight);
+  rect(0, height-dockHeight, width, dockHeight);
 
   // main objects loop
   int layer =0;
@@ -112,17 +112,17 @@ void draw() {
   int icon = 0 ;
   while (icon < numIcons ) {
     float x = iconboxWidth*icon ;
-    float y = height-buttonsHeight ;
+    float y = height-dockHeight ;
     float w = iconboxWidth;
-    float h = buttonsHeight;
+    float h = dockHeight;
 
     boolean downButton = false;
     if (mouseX < x+w && mouseX > x && mouseY < y+h && mouseY > y ) {
       // hovered
       if (mouseClicked==true) {
-        menushown=icon;
+        menuShown=icon;
       } 
-      if (mouseUpClicked == true && menushown==icon) {
+      if (mouseUpClicked == true && menuShown==icon) {
         print(icon+"\n");
         pushSound.play();
         if (icon==5) {
@@ -131,7 +131,7 @@ void draw() {
           CactusObject o = new CactusObject();
           
           o.x = 250 ;       //random(0, width);
-          o.y = 70 ;        //random(0, height-buttonsHeight-20);
+          o.y = 70 ;        //random(0, height-dockHeight-20);
           o.w =300;
           o.h =300;
           
@@ -158,7 +158,7 @@ void draw() {
 
       if (mousePressed==true) {
         // mouse down
-        if (menushown==icon) {
+        if (menuShown==icon) {
           downButton = true;
           fill(iconMouseDownColors[icon]);
         } else {
@@ -186,11 +186,11 @@ void draw() {
 
     rect(xi, yi, wi, hi);
 
-    if (menushown==icon) {
+    if (menuShown==icon) {
       //using menu
       if (icon==4) { // flowers
         float menuButtonHeight = hi;
-        float menuButtonY= y-menugap-menuButtonHeight;
+        float menuButtonY= y-menuGap-menuButtonHeight;
 
         int menuButtonIndex= 0;
         while (menuButtonIndex<flowers.length) {
@@ -202,12 +202,12 @@ void draw() {
           // create correct flower object
 
 
-          menuButtonY = menuButtonY - menugap - menuButtonHeight;
+          menuButtonY = menuButtonY - menuGap - menuButtonHeight;
           menuButtonIndex = menuButtonIndex + 1 ;
         }
       } else {
         float menuheight=300;
-        rect(xi, y-menugap-menuheight, wi, menuheight);
+        rect(xi, y-menuGap-menuheight, wi, menuheight);
       }
     }
 
@@ -218,7 +218,7 @@ void draw() {
 
   frame = frame + 1;
   if (mousePressed==false) {
-    menushown=-1;
+    menuShown=-1;
   }
   mouseWasPressed=mousePressed;
 }
