@@ -2,7 +2,7 @@ import processing.sound.*;
 int menuShown = -1;
 int dockHeight = 60;
 boolean mouseWasPressed=false;
-int numIcons = 6;
+int numButtons = 6;
 int frame = 0;
 int menuGap = 10;
 SoundFile pushSound;
@@ -32,7 +32,8 @@ color[] iconMouseUpColors = {
   color(100, 100, 100), 
 };
 
-PImage base1 ;
+PImage[] bases ;
+
 PImage[] flowers ;
 
 PImage texture1 ;
@@ -55,7 +56,10 @@ ArrayList<CactusObject> objects = new ArrayList<CactusObject>();
 void setup() {
   size(800, 600);
   ellipseMode(CENTER);
-  base1 = loadImage("CACTI.png");
+  
+  bases = new PImage[2];
+  bases[0] = loadImage("base1.png");
+  bases[1] = loadImage("base2.png");
 
   flowers = new PImage[3];
   flowers[0] = loadImage("flower1.png");
@@ -74,6 +78,7 @@ void setup() {
 
   rectMode(CORNER);
   pushSound = new SoundFile(this, "button.wav");
+ 
 }
 
 
@@ -83,13 +88,13 @@ void draw() {
   boolean mouseClicked = (mousePressed == true && mouseWasPressed== false);
   boolean mouseUpClicked = (mousePressed == false && mouseWasPressed== true);
 
-
+//dock
   fill(255, 255, 255);
   rect(0, height-dockHeight, width, dockHeight);
 
   // main objects loop
   int layer =0;
-  while (layer< numIcons) {
+  while (layer< numButtons) {
 
     int i = 0;
     while (i < objects.size ()) {
@@ -108,9 +113,9 @@ void draw() {
   }
   // buttons loop
 
-  float iconBoxWidth = ((float)width)/numIcons ;
+  float iconBoxWidth = ((float)width)/numButtons ;
   int icon = 0 ;
-  while (icon < numIcons ) {
+  while (icon < numButtons ) {
     float x = iconBoxWidth*icon ;
     float y = height-dockHeight ;
     float w = iconBoxWidth;
@@ -127,9 +132,10 @@ void draw() {
         pushSound.play();
         if (icon==5) {
           objects.clear();
+          
         } else {
           CactusObject o = new CactusObject();
-          
+       //////STOPED HERE   
           o.x = 250 ;       //random(0, width);
           o.y = 70 ;        //random(0, height-dockHeight-20);
           o.w =300;
@@ -140,7 +146,8 @@ void draw() {
             o.image = flowers[backgroundChooser];
             o.image = backgrounds[backgroundChooser];
           } else if (icon==1) {
-            o.image = base1;
+            int baseChooser = (int)random(0, bases.length-0.0000000001);
+            o.image = bases[baseChooser];
           } else if (icon==2) {
             int potChooser = (int)random(0, pots.length-0.0000000001);
             o.image = pots[potChooser];
