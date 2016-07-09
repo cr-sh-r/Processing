@@ -36,7 +36,7 @@ PImage[] bases ;
 
 PImage[] flowers ;
 
-PImage texture1 ;
+PImage[] textures ;
 PImage[] pots ;
 
 PImage[] backgrounds ;
@@ -56,7 +56,7 @@ ArrayList<CactusObject> objects = new ArrayList<CactusObject>();
 void setup() {
   size(800, 600);
   ellipseMode(CENTER);
-  
+
   bases = new PImage[2];
   bases[0] = loadImage("base1.png");
   bases[1] = loadImage("base2.png");
@@ -66,7 +66,9 @@ void setup() {
   flowers[1] = loadImage("flower2.png");
   flowers[2] = loadImage("flower3.png");
 
-  texture1 = loadImage("texture1.png");
+  textures = new PImage[2];
+  textures[0]=loadImage("texture1.png");
+  textures[1]=loadImage("texture1.2.png");
 
   pots = new PImage[2];
   pots[0] = loadImage("pot1.png");
@@ -78,7 +80,6 @@ void setup() {
 
   rectMode(CORNER);
   pushSound = new SoundFile(this, "button.wav");
- 
 }
 
 
@@ -88,7 +89,7 @@ void draw() {
   boolean mouseClicked = (mousePressed == true && mouseWasPressed== false);
   boolean mouseUpClicked = (mousePressed == false && mouseWasPressed== true);
 
-//dock
+  //dock
   fill(255, 255, 255);
   rect(0, height-dockHeight, width, dockHeight);
 
@@ -132,18 +133,17 @@ void draw() {
         pushSound.play();
         if (icon==5) {
           objects.clear();
-          
         } else {
           CactusObject o = new CactusObject();
-       //////STOPED HERE   
+
           o.x = 250 ;       //random(0, width);
           o.y = 70 ;        //random(0, height-dockHeight-20);
           o.w =300;
           o.h =300;
-          
+
           if (icon==0) {
             int backgroundChooser = (int)random(0, backgrounds.length-0.0000000001);
-            o.image = flowers[backgroundChooser];
+            o.image = backgrounds[backgroundChooser];
             o.image = backgrounds[backgroundChooser];
           } else if (icon==1) {
             int baseChooser = (int)random(0, bases.length-0.0000000001);
@@ -152,7 +152,8 @@ void draw() {
             int potChooser = (int)random(0, pots.length-0.0000000001);
             o.image = pots[potChooser];
           } else if (icon==3) {
-            o.image = texture1;
+            int textureChooser = (int)random(0, textures.length-0.0000000001);
+            o.image = textures[textureChooser];
           } else if (icon==4) {
             int flowerChooser = (int)random(0, flowers.length-0.0000000001);
             o.image = flowers[flowerChooser];
