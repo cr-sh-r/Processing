@@ -1,4 +1,5 @@
 import processing.sound.*;
+import processing.sound.*;
 int menuShown = -1;
 int dockHeight = 60;
 boolean mouseWasPressed=false;
@@ -6,6 +7,7 @@ int numButtons = 6;
 int frame = 0;
 int menuGap = 10;
 SoundFile pushSound;
+SoundFile clearSound;
 
 color[] iconNotHoveredColors = { 
   color(255, 40, 30), // icon 0 background
@@ -80,6 +82,7 @@ void setup() {
 
   rectMode(CORNER);
   pushSound = new SoundFile(this, "button.wav");
+  clearSound = new SoundFile(this, "clearButtonSound.mp3");
 }
 
 
@@ -130,12 +133,23 @@ void draw() {
       } 
       if (mouseUpClicked == true && menuShown==icon) {
         print(icon+"\n");
-        pushSound.play();
+        if (icon==0) {
+          pushSound.play();
+        } else if (icon==1) {
+          pushSound.play();
+        } else if (icon==2) {
+          pushSound.play();
+        } else if (icon==3) {
+          pushSound.play();
+        } else if (icon==4) {
+          pushSound.play();
+        }
         if (icon==5) {
           objects.clear();
+          clearSound.play();
         } else {
           CactusObject o = new CactusObject();
-          
+
           o.w = 300;
           o.x = width/2-o.w/2 ;    //random(0, width);
           o.y = 70 ;   //random(0, height-dockHeight-20);
