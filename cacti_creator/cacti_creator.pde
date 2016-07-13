@@ -152,8 +152,9 @@ void draw() {
 
           o.w = 300;
           o.x = width/2-o.w/2 ;    //random(0, width);
-          o.y = 70 ;   //random(0, height-dockHeight-20);
           o.h =300;
+          o.y = (height-dockHeight)/2-o.h/2 ;   //random(0, height-dockHeight-20);
+          
 
           if (icon==0) {
             int backgroundChooser = (int)random(0, backgrounds.length-0.0000000001);
