@@ -135,10 +135,10 @@ void draw() {
           objects.clear();
         } else {
           CactusObject o = new CactusObject();
-
-          o.x = 250 ; //250      //random(0, width);
-          o.y = 70 ;    //70    //random(0, height-dockHeight-20);
-          o.w =300;
+          
+          o.w = 300;
+          o.x = width/2-o.w/2 ;    //random(0, width);
+          o.y = 70 ;   //random(0, height-dockHeight-20);
           o.h =300;
 
           if (icon==0) {
