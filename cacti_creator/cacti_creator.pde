@@ -149,7 +149,6 @@ void draw() {
           if (icon==0) {
             int backgroundChooser = (int)random(0, backgrounds.length-0.0000000001);
             o.image = backgrounds[backgroundChooser];
-            o.image = backgrounds[backgroundChooser];
           } else if (icon==1) {
             int baseChooser = (int)random(0, bases.length-0.0000000001);
             o.image = bases[baseChooser];
@@ -196,7 +195,7 @@ void draw() {
     float yi= y+bh+buttonYOffset;
     float wi = w-2*bw;
     float hi = h-2*bh;
-
+    stroke(0, 0, 0);
     rect(xi, yi, wi, hi);
 
     if (menuShown==icon) {
@@ -207,6 +206,11 @@ void draw() {
 
         int menuButtonIndex= 0;
         while (menuButtonIndex<flowers.length) {
+          if (mouseX>xi && mouseX<xi+wi && mouseY>menuButtonY && mouseY< menuButtonY+menuButtonHeight) {
+            stroke(255, 255, 255);
+          } else {
+            stroke(0, 0, 0);
+          }
           rect(xi, menuButtonY, wi, menuButtonHeight);
           image(flowers[menuButtonIndex], xi, menuButtonY, wi, menuButtonHeight);
 
