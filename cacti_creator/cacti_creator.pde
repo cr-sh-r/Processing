@@ -133,15 +133,13 @@ void draw() {
       } 
       if (mouseUpClicked == true && menuShown==icon) {
         print(icon+"\n");
-        if (icon<5) {
-          pushSound.play();
-        } 
+
         if (icon==5) {
           objects.clear();
           clearSound.play();
         } else {
           CactusObject o = new CactusObject();
-
+          pushSound.play();
           o.w = 300;
           o.x = width/2-o.w/2 ;    //random(0, width);
           o.h =300;
