@@ -133,17 +133,9 @@ void draw() {
       } 
       if (mouseUpClicked == true && menuShown==icon) {
         print(icon+"\n");
-        if (icon==0) {
+        if (icon<5) {
           pushSound.play();
-        } else if (icon==1) {
-          pushSound.play();
-        } else if (icon==2) {
-          pushSound.play();
-        } else if (icon==3) {
-          pushSound.play();
-        } else if (icon==4) {
-          pushSound.play();
-        }
+        } 
         if (icon==5) {
           objects.clear();
           clearSound.play();
@@ -154,7 +146,7 @@ void draw() {
           o.x = width/2-o.w/2 ;    //random(0, width);
           o.h =300;
           o.y = (height-dockHeight)/2-o.h/2 ;   //random(0, height-dockHeight-20);
-          
+
 
           if (icon==0) {
             int backgroundChooser = (int)random(0, backgrounds.length-0.0000000001);
