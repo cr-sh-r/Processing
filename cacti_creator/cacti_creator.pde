@@ -138,33 +138,6 @@ void draw() {
           objects.clear();
           clearSound.play();
         } else {
-          CactusObject o = new CactusObject();
-          pushSound.play();
-          o.w = 300;
-          o.x = width/2-o.w/2 ;    //random(0, width);
-          o.h =300;
-          o.y = (height-dockHeight)/2-o.h/2 ;   //random(0, height-dockHeight-20);
-
-
-          if (icon==0) {
-            int backgroundChooser = (int)random(0, backgrounds.length-0.0000000001);
-            o.image = backgrounds[backgroundChooser];
-          } else if (icon==1) {
-            int baseChooser = (int)random(0, bases.length-0.0000000001);
-            o.image = bases[baseChooser];
-          } else if (icon==2) {
-            int potChooser = (int)random(0, pots.length-0.0000000001);
-            o.image = pots[potChooser];
-          } else if (icon==3) {
-            int textureChooser = (int)random(0, textures.length-0.0000000001);
-            o.image = textures[textureChooser];
-          } else if (icon==4) {
-            int flowerChooser = (int)random(0, flowers.length-0.0000000001);
-            o.image = flowers[flowerChooser];
-          }
-
-          o.id = icon;
-          objects.add(o);
         }
       }
 
@@ -208,6 +181,24 @@ void draw() {
         while (menuButtonIndex<flowers.length) {
           if (mouseX>xi && mouseX<xi+wi && mouseY>menuButtonY && mouseY< menuButtonY+menuButtonHeight) {
             stroke(255, 255, 255);
+            if (mouseUpClicked==true) {
+              // print(menuButtonIndex+"\n");
+              CactusObject o = new CactusObject();
+              pushSound.play();
+              o.w = 300;
+              o.x = width/2-o.w/2 ;    //random(0, width);
+              o.h =300;
+              o.y = (height-dockHeight)/2-o.h/2 ;   //random(0, height-dockHeight-20);
+
+
+
+             
+              o.image = flowers[menuButtonIndex];
+
+
+              o.id = icon;
+              objects.add(o);
+            }
           } else {
             stroke(0, 0, 0);
           }
