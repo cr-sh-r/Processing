@@ -1,11 +1,12 @@
 import processing.sound.*;
-import processing.sound.*;
 int menuShown = -1;
 int dockHeight = 60;
 boolean mouseWasPressed=false;
 int numButtons = 6;
 int frame = 0;
 int menuGap = 10;
+boolean mouseClicked = false;
+boolean mouseUpClicked = false;
 SoundFile pushSound;
 SoundFile clearSound;
 
@@ -85,12 +86,39 @@ void setup() {
   clearSound = new SoundFile(this, "clearButtonSound.mp3");
 }
 
+void handleIconMenu(int icon, float x, float y, float menuButtonWidth, float menuButtonHeight, PImage[] images) {
+  float menuButtonY= y-menuGap-menuButtonHeight;
+  int menuButtonIndex= 0;
+  while (menuButtonIndex<images.length) {
+    if (mouseX>x && mouseX<x+menuButtonWidth && mouseY>menuButtonY && mouseY< menuButtonY+menuButtonHeight) {
+      stroke(255, 255, 255);
+      if (mouseUpClicked==true) {
+        // print(menuButtonIndex+"\n");
+        CactusObject o = new CactusObject();
+        pushSound.play();
+        o.w = 300;
+        o.x = width/2-o.w/2 ;    //random(0, width);
+        o.h =300;
+        o.y = (height-dockHeight)/2-o.h/2 ;   //random(0, height-dockHeight-20);
+        o.image = images[menuButtonIndex];
+        o.id = icon;
+        objects.add(o);
+      }
+    } else {
+      stroke(0, 0, 0);
+    }
+    rect(x, menuButtonY, menuButtonWidth, menuButtonHeight);
+    image(images[menuButtonIndex], x, menuButtonY, menuButtonWidth, menuButtonHeight);
+    menuButtonY = menuButtonY - menuGap - menuButtonHeight;
+    menuButtonIndex = menuButtonIndex + 1 ;
+  }
+}
 
 void draw() {
   background(10, 60, 10);
 
-  boolean mouseClicked = (mousePressed == true && mouseWasPressed== false);
-  boolean mouseUpClicked = (mousePressed == false && mouseWasPressed== true);
+  mouseClicked = (mousePressed == true && mouseWasPressed== false);
+  mouseUpClicked = (mousePressed == false && mouseWasPressed== true);
 
   //dock
   fill(255, 255, 255);
@@ -137,7 +165,6 @@ void draw() {
         if (icon==5) {
           objects.clear();
           clearSound.play();
-        } else {
         }
       }
 
@@ -173,46 +200,16 @@ void draw() {
 
     if (menuShown==icon) {
       //using menu
-      if (icon==4) { // flowers
-        float menuButtonHeight = hi;
-        float menuButtonY= y-menuGap-menuButtonHeight;
-
-        int menuButtonIndex= 0;
-        while (menuButtonIndex<flowers.length) {
-          if (mouseX>xi && mouseX<xi+wi && mouseY>menuButtonY && mouseY< menuButtonY+menuButtonHeight) {
-            stroke(255, 255, 255);
-            if (mouseUpClicked==true) {
-              // print(menuButtonIndex+"\n");
-              CactusObject o = new CactusObject();
-              pushSound.play();
-              o.w = 300;
-              o.x = width/2-o.w/2 ;    //random(0, width);
-              o.h =300;
-              o.y = (height-dockHeight)/2-o.h/2 ;   //random(0, height-dockHeight-20);
-
-
-
-             
-              o.image = flowers[menuButtonIndex];
-
-
-              o.id = icon;
-              objects.add(o);
-            }
-          } else {
-            stroke(0, 0, 0);
-          }
-          rect(xi, menuButtonY, wi, menuButtonHeight);
-          image(flowers[menuButtonIndex], xi, menuButtonY, wi, menuButtonHeight);
-
-
-          // hit test rect with mouse up clicked
-          // create correct flower object
-
-
-          menuButtonY = menuButtonY - menuGap - menuButtonHeight;
-          menuButtonIndex = menuButtonIndex + 1 ;
-        }
+      if (icon==0) { 
+        handleIconMenu( icon, xi, y, wi, hi, backgrounds);
+      } else  if (icon==1) { 
+        handleIconMenu( icon, xi, y, wi, hi, bases);
+      } else  if (icon==2) { 
+        handleIconMenu( icon, xi, y, wi, hi, pots);
+      } else  if (icon==3) { 
+        handleIconMenu( icon, xi, y, wi, hi, textures);
+      } else  if (icon==4) { 
+        handleIconMenu( icon, xi, y, wi, hi, flowers);
       } else {
         float menuheight=300;
         rect(xi, y-menuGap-menuheight, wi, menuheight);
