@@ -61,34 +61,33 @@ void setup() {
   ellipseMode(CENTER);
 
   backgrounds = new PImage[2];
-  backgrounds[0] = loadImage("background1.png");
-  backgrounds[1] = loadImage("background2.png");
+  backgrounds[0] = loadImage("images/CACTI/background 2.png");
+  backgrounds[1] = loadImage("images/CACTI2/background group.png");
   images[0] = backgrounds;
 
   bases = new PImage[2];
-  bases[0] = loadImage("base1.png");
-  bases[1] = loadImage("base2.png");
+  bases[0] = loadImage("images/CACTI2/body.png");
+  bases[1] = loadImage("images/CACTI/body 2.png");
   images[1] = bases;
 
   pots = new PImage[2];
-  pots[0] = loadImage("pot1.png");
-  pots[1] = loadImage("pot2.png");
+  pots[0] = loadImage("images/CACTI/pot 2.png");
+  pots[1] = loadImage("images/CACTI2/pot 1.png");
   images[2] = pots;
 
   textures = new PImage[2];
-  textures[0]=loadImage("texture1.png");
-  textures[1]=loadImage("texture1.2.png");
+  textures[0]=loadImage("images/CACTI/texture 2.png");
+  textures[1]=loadImage("images/CACTI2/prickels.png");
   images[3] = textures;
 
-  flowers = new PImage[3];
-  flowers[0] = loadImage("flower1.png");
-  flowers[1] = loadImage("flower2.png");
-  flowers[2] = loadImage("flower3.png");
+  flowers = new PImage[2];
+  flowers[0] = loadImage("images/CACTI/flower 2.png");
+  flowers[1] = loadImage("images/CACTI2/flower 1.png");
   images[4] = flowers;
 
   rectMode(CORNER);
-  pushSound = new SoundFile(this, "button.wav");
-  clearSound = new SoundFile(this, "clearButtonSound.mp3");
+  pushSound = new SoundFile(this, "sounds/button.wav");
+  clearSound = new SoundFile(this, "sounds/clearButtonSound.mp3");
 }
 
 void handleIconMenu(int icon, float x, float y, float menuButtonWidth, float menuButtonHeight) {
