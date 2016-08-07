@@ -35,6 +35,8 @@ color[] iconMouseUpColors = {
   color(100, 100, 100), 
 };
 
+String[] labels = {"background", "body", "pot" ,"texture" , "flowers" , "tools"};
+
 PImage[] backgrounds ;
 PImage[] bases ;
 PImage[] pots ;
@@ -62,7 +64,7 @@ void setup() {
   backgrounds[0] = loadImage("background1.png");
   backgrounds[1] = loadImage("background2.png");
   images[0] = backgrounds;
-  
+
   bases = new PImage[2];
   bases[0] = loadImage("base1.png");
   bases[1] = loadImage("base2.png");
@@ -155,6 +157,7 @@ void draw() {
     float y = height-dockHeight ;
     float w = iconBoxWidth;
     float h = dockHeight;
+    color c ;
 
     boolean downButton = false;
     if (mouseX < x+w && mouseX > x && mouseY < y+h && mouseY > y ) {
@@ -175,17 +178,17 @@ void draw() {
         // mouse down
         if (menuShown==icon) {
           downButton = true;
-          fill(iconMouseDownColors[icon]);
+          c = iconMouseDownColors[icon] ;
         } else {
-          fill(iconNotHoveredColors[icon]);
+          c = iconNotHoveredColors[icon] ;
         }
       } else {
         // mouse up
-        fill(iconMouseUpColors[icon]);
+        c = iconMouseUpColors[icon];
       }
     } else {
       // not hovered
-      fill(iconNotHoveredColors[icon]);
+      c = iconNotHoveredColors[icon];
     }
 
     float buttonYOffset = 0;
@@ -199,16 +202,23 @@ void draw() {
     float wi = w-2*bw;
     float hi = h-2*bh;
     stroke(0, 0, 0);
+    fill(c);
     rect(xi, yi, wi, hi);
 
+    fill(0, 0, 0);
+    
+    textSize(15);
+    text(labels[icon], xi, yi);
+    fill(c);
+    
     if (menuShown==icon) {
       //using menu
       if (icon==5) { 
         float menuheight=300;
         rect(xi, y-menuGap-menuheight, wi, menuheight);
-      }else {
+      } else {
         handleIconMenu( icon, xi, y, wi, hi);
-      } 
+      }
     }
 
     icon = icon + 1;
