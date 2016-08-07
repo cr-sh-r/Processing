@@ -206,9 +206,12 @@ void draw() {
     rect(xi, yi, wi, hi);
 
     fill(0, 0, 0);
-    
-    textSize(15);
-    text(labels[icon], xi, yi);
+    float th = 15;     //th= textHeight
+    textSize(th);
+    float tw = textWidth(labels[icon]);
+    text(labels[icon], 
+          xi+(wi-tw)/2, 
+          yi+(hi-th)/2+th);
     fill(c);
     
     if (menuShown==icon) {
