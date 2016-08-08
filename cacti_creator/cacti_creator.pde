@@ -36,7 +36,7 @@ color[] iconMouseUpColors = {
   color(100, 100, 100), 
 };
 
-String[] labels = {"background", "body", "pot" ,"texture" , "flowers" , "tools"};
+String[] labels = {"background", "body", "pot", "texture", "flowers", "tools"};
 
 PImage[] backgrounds ;
 PImage[] bases ;
@@ -56,6 +56,7 @@ class CactusObject {
 }
 
 ArrayList<CactusObject> objects = new ArrayList<CactusObject>();
+CactusObject draggingObject = null;
 
 void setup() {
   size(800, 600);
@@ -101,7 +102,7 @@ void handleIconMenu(int icon, float x, float y, float menuButtonWidth, float men
         // print(menuButtonIndex+"\n");
         CactusObject o = new CactusObject();
         pushSound.play();
-         o.image = images[icon][menuButtonIndex];
+        o.image = images[icon][menuButtonIndex];
         o.w = o.image.width*imageScale;
         o.x = width/2-o.w/2 ;    //random(0, width);
         o.h =o.image.height*imageScale;
@@ -124,7 +125,9 @@ void draw() {
 
   mouseClicked = (mousePressed == true && mouseWasPressed== false);
   mouseUpClicked = (mousePressed == false && mouseWasPressed== true);
-
+  if(mousePressed==false){
+    draggingObject=null;
+  }
   //dock
   fill(255, 255, 255);
   rect(0, height-dockHeight, width, dockHeight);
@@ -139,6 +142,11 @@ void draw() {
       if (layer == obj.id) {
         image(obj.image, obj.x, obj.y, obj.w, obj.h );
 
+        if (mouseX>obj.x && mouseX < obj.x + obj.w &&mouseY>obj.y&&mouseY<obj.y+obj.h&&mouseClicked) {
+          noFill();
+          rect( obj.x, obj.y, obj.w, obj.h );
+          draggingObject = obj;
+        }
         //String s = "hi" + obj.id;
         //text(s, obj.x, obj.y);
       }
@@ -148,6 +156,17 @@ void draw() {
 
     layer = layer + 1;
   }
+  if(draggingObject != null){
+    draggingObject.x=mouseX ;
+    draggingObject.y=mouseY ;
+    
+    
+  }
+  
+  
+  
+  
+  
   // buttons loop
 
   float iconBoxWidth = ((float)width)/numButtons ;
@@ -210,10 +229,10 @@ void draw() {
     textSize(th);
     float tw = textWidth(labels[icon]);
     text(labels[icon], 
-          xi+(wi-tw)/2, 
-          yi+(hi-th)/2+th);
+      xi+(wi-tw)/2, 
+      yi+(hi-th)/2+th);
     fill(c);
-    
+
     if (menuShown==icon) {
       //using menu
       if (icon==5) { 
