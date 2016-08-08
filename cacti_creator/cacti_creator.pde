@@ -7,6 +7,7 @@ int frame = 0;
 int menuGap = 10;
 boolean mouseClicked = false;
 boolean mouseUpClicked = false;
+float imageScale =0.62;
 SoundFile pushSound;
 SoundFile clearSound;
 
@@ -100,11 +101,11 @@ void handleIconMenu(int icon, float x, float y, float menuButtonWidth, float men
         // print(menuButtonIndex+"\n");
         CactusObject o = new CactusObject();
         pushSound.play();
-        o.w = 300;
+         o.image = images[icon][menuButtonIndex];
+        o.w = o.image.width*imageScale;
         o.x = width/2-o.w/2 ;    //random(0, width);
-        o.h =300;
-        o.y = (height-dockHeight)/2-o.h/2 ;   //random(0, height-dockHeight-20);
-        o.image = images[icon][menuButtonIndex];
+        o.h =o.image.height*imageScale;
+        o.y = (height-dockHeight)/2-o.h/2 ;   //random(0, height-dockHeight-20);      
         o.id = icon;
         objects.add(o);
       }
