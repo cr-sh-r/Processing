@@ -57,7 +57,8 @@ class CactusObject {
 
 ArrayList<CactusObject> objects = new ArrayList<CactusObject>();
 CactusObject draggingObject = null;
-
+float draggingOffsetX=0;
+float draggingOffsetY=0;
 void setup() {
   size(800, 600);
   ellipseMode(CENTER);
@@ -125,8 +126,16 @@ void draw() {
 
   mouseClicked = (mousePressed == true && mouseWasPressed== false);
   mouseUpClicked = (mousePressed == false && mouseWasPressed== true);
-  if(mousePressed==false){
+  if (mousePressed==false) {
     draggingObject=null;
+  }
+  
+  if (draggingObject != null) {
+    draggingObject.x=mouseX-draggingOffsetX ;
+    draggingObject.y=mouseY-draggingOffsetY ;
+    //debug rectangle
+    noFill();
+    rect( draggingObject.x, draggingObject.y, draggingObject.w, draggingObject.h );
   }
   
   // main objects loop
@@ -140,8 +149,10 @@ void draw() {
         image(obj.image, obj.x, obj.y, obj.w, obj.h );
 
         if (mouseX>obj.x && mouseX < obj.x + obj.w &&mouseY>obj.y&&mouseY<obj.y+obj.h&&mouseClicked) {
-          noFill();
-          rect( obj.x, obj.y, obj.w, obj.h );
+
+          draggingOffsetX = mouseX -obj.x;
+          draggingOffsetY = mouseY -obj.y;
+          
           draggingObject = obj;
         }
         //String s = "hi" + obj.id;
@@ -153,21 +164,12 @@ void draw() {
 
     layer = layer + 1;
   }
-  
-  if(draggingObject != null){
-    draggingObject.x=mouseX ;
-    draggingObject.y=mouseY ;
-    
-    
-  }
-  
-  
-  
+
   //dock
   fill(255, 255, 255);
   rect(0, height-dockHeight, width, dockHeight);
 
-  
+
   // buttons loop
 
   float iconBoxWidth = ((float)width)/numButtons ;
