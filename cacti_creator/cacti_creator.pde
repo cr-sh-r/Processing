@@ -128,10 +128,7 @@ void draw() {
   if(mousePressed==false){
     draggingObject=null;
   }
-  //dock
-  fill(255, 255, 255);
-  rect(0, height-dockHeight, width, dockHeight);
-
+  
   // main objects loop
   int layer =0;
   while (layer< numButtons) {
@@ -156,6 +153,7 @@ void draw() {
 
     layer = layer + 1;
   }
+  
   if(draggingObject != null){
     draggingObject.x=mouseX ;
     draggingObject.y=mouseY ;
@@ -165,7 +163,10 @@ void draw() {
   
   
   
-  
+  //dock
+  fill(255, 255, 255);
+  rect(0, height-dockHeight, width, dockHeight);
+
   
   // buttons loop
 
