@@ -115,7 +115,24 @@ void handleIconMenu(int icon, float x, float y, float menuButtonWidth, float men
       stroke(0, 0, 0);
     }
     rect(x, menuButtonY, menuButtonWidth, menuButtonHeight);
-    image(images[icon][menuButtonIndex], x, menuButtonY, menuButtonWidth, menuButtonHeight);
+    
+    PImage img = images[icon][menuButtonIndex]; 
+    float iw= img.width;
+    float ih= img.height;
+    float ia=iw/ih;
+    float w;
+    float h;
+    if(ia>1){            //horizontal
+      w=menuButtonWidth;
+      h= menuButtonWidth/ia;
+    }else {             // vertical
+      w=ia*menuButtonHeight;
+      h=menuButtonHeight;
+  
+    }
+    
+    
+    image(img, x, menuButtonY, w, h);
     menuButtonY = menuButtonY - menuGap - menuButtonHeight;
     menuButtonIndex = menuButtonIndex + 1 ;
   }
@@ -134,8 +151,8 @@ void draw() {
     draggingObject.x=mouseX-draggingOffsetX ;
     draggingObject.y=mouseY-draggingOffsetY ;
     //debug rectangle
-    noFill();
-    rect( draggingObject.x, draggingObject.y, draggingObject.w, draggingObject.h );
+    //noFill();
+    //rect( draggingObject.x, draggingObject.y, draggingObject.w, draggingObject.h );
   }
   
   // main objects loop
@@ -242,7 +259,7 @@ void draw() {
         float menuheight=300;
         rect(xi, y-menuGap-menuheight, wi, menuheight);
       } else {
-        handleIconMenu( icon, xi, y, wi, hi);
+        handleIconMenu( icon, xi, y, wi, wi);
       }
     }
 
