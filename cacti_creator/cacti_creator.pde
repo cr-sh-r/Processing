@@ -122,17 +122,23 @@ void handleIconMenu(int icon, float x, float y, float menuButtonWidth, float men
     float ia=iw/ih;
     float w;
     float h;
+    float xi;
+    float yi;
     if(ia>1){            //horizontal
       w=menuButtonWidth;
       h= menuButtonWidth/ia;
+      xi=x;
+      yi=menuButtonY+menuButtonHeight/2-h/2;
+      
     }else {             // vertical
       w=ia*menuButtonHeight;
       h=menuButtonHeight;
-  
+      xi=x+menuButtonWidth/2-w/2;
+      yi=menuButtonY;
     }
     
     
-    image(img, x, menuButtonY, w, h);
+    image(img, xi, yi, w, h);
     menuButtonY = menuButtonY - menuGap - menuButtonHeight;
     menuButtonIndex = menuButtonIndex + 1 ;
   }
