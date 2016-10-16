@@ -14,6 +14,9 @@ void draw() {
   papery=papery+1;
   stroke(0,0,0);
   fill(255,255,255);
+  //imageMode(CENTER);
+  image(paperPlane,paperx-paperPlane.width/2,papery-paperPlane.height/2, paperPlane.width,paperPlane.height );
+
+  //rect(paperx-paperPlane.width/2,papery-paperPlane.height/2, paperPlane.width,paperPlane.height );
   ellipse(paperx,papery, 11,11);
-  image(paperPlane, paperx , papery, 100,100);
 }
