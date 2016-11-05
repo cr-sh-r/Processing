@@ -2,6 +2,7 @@ int[] DailyWordCount = {
   469, 
   1322, 
   1589,
+  2075,
   
 };
 float GoalWordCount=12000;
