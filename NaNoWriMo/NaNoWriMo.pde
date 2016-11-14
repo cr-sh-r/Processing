@@ -2,18 +2,19 @@ float GoalWordCount=12000;
 
 int[] DailyWordCount = {
   //int(GoalWordCount/30),int(2*GoalWordCount/30),int(3*GoalWordCount/30),int(4*GoalWordCount/30),
-  469, 
-  1322, 
-  1589,
-  2075,
-  2075,
-  2527,
-  2898,
-  3085,
-  3605,
-  3730,
-  4347,
-  5041,
+  469,     //day  1
+  1322,    //day  2
+  1589,    //day  3
+  2075,    //day  4
+  2075,    //day  5
+  2527,    //day  6
+  2898,    //day  7
+  3085,    //day  8
+  3605,    //day  9
+  3730,    //day  10
+  4347,    //day  11
+  5041,    //day  12
+  5498,    //day  13
   
   
 };
