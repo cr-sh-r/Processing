@@ -15,6 +15,8 @@ int[] DailyWordCount = {
   4347,    //day  11
   5041,    //day  12
   5498,    //day  13
+  5708,    //day  14
+  6307,    //day  13
   
   
 };
@@ -36,4 +38,13 @@ void draw() {
     i=i+1;
   }
   line(stepWidth/2,height-scale*GoalWordCount/30, 29.5*stepWidth, height-scale*GoalWordCount);
+  
+  int curentWordCount = DailyWordCount[DailyWordCount.length-1];
+  String curentcount = "Word Count:"+curentWordCount;
+  text(curentcount,50,30);
+  
+  int wordGoal = int(DailyWordCount.length*GoalWordCount/30);
+  String sWordGoal = "Todays Goal:"+wordGoal;
+  text(sWordGoal,50,50);
+  //how much above? or below
 }
