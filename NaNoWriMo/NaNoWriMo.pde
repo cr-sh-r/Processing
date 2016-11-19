@@ -19,6 +19,8 @@ int[] DailyWordCount = {
   6307,    //day  15
   6307,    //day  16
   6874,    //day  17
+  6874,    //day  18
+  7490,    //day  19
   
   
 };
