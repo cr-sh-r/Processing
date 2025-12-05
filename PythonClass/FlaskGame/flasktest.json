@@ -1,0 +1,21 @@
+{
+    "hello": { "message": "You are standing in front of a haunted mansion with an old door.",
+              "choices": { "A": ["Open the door", "foyer"],
+                          "B": ["Run away", "street"],
+                          "C": ["Phone a friend", "phone-outside"] } },
+    "foyer": { "message": "You are standing in a grand foyer. There is a marble table with a vase of dried roses and a dangerous spiral staircase.",
+              "choices": { "A": ["Pick up a rose", "rose"],
+                          "B": ["Try to walk up the stairs", "first-step"],
+                          "C": ["Yell 'hello'", "yell"] } },
+    "street": { "message": "You are standing on the street at the end of the block. You have the impression you just escaped something really bad. You walk away and don't look back.",
+               "choices": {} },
+    "phone-outside": { "message": "You call your friend Becca. She says your voice sounds weird and tells you to follow your heart.",
+                "choices": { "A": ["Open the door", "foyer"],
+                            "B": ["Run away", "street"] } },
+    "rose": { "message": "You pick up an old dried rose. A thorn pricks you. A drop of blood falls on a white lace doily. Suddenly you hear a voice yell 'WHO'S THERE?' You look up and see an old woman at the banister on the landing.",
+             "choices": {} },
+    "first-step": { "message": "You step onto the first stair. It lets out a loud creak. Suddenly you hear a voice yell 'WHO'S THERE?' You look up and see an old woman at the banister on the landing.",
+             "choices": {} },
+    "yell": { "message": "You yell 'WHAT UP GHOSTS?!'. Suddenly you hear a voice yell 'WHO'S THERE?' You look up and see an old woman at the banister on the landing.",
+             "choices": {} }
+}

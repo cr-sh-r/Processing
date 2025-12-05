@@ -1,0 +1,20 @@
+[
+    {
+        "name": "spotted chickory", 
+        "color": "brown", 
+        "pattern": "spotted", 
+        "habitat": "ground" 
+    },
+    {
+        "name": "striped jay",
+        "color": "brown", 
+        "pattern": "striped", 
+        "habitat": "tree" 
+    },
+    {
+        "name": "lisa", 
+        "color": "white", 
+        "pattern": "plain", 
+        "habitat": "ground"
+    }
+]

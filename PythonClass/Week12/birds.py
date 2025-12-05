@@ -1,0 +1,1 @@
+"bird1 = {\"name\": \"spotted chickory\", \"color\": \"brown\", \"pattern\": \"spotted\", \"habitat\": \"ground\" }\nbird2 = {\"name\": \"striped jay\", \"color\": \"brown\", \"pattern\": \"striped\", \"habitat\": \"tree\" }\nbird3 = {\"name\": \"lisa\", \"color\": \"white\", \"pattern\": \"plain\", \"habitat\": \"ground\"} \n"

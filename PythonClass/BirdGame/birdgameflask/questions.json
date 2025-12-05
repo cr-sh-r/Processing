@@ -1,0 +1,13 @@
+
+   {
+    "start": {"message": "Did you see a bird?", "asked": false, "answered": false, "choices": ["yes", "no"]},
+
+    "color": {"message":"What color was it?", "asked": false, "answered": false, "choices": ["brown", "white", "yellow"]},
+ 
+    "pattern": {"message": "What pattern did it have?", "asked": false, "answered": false, "choices": ["spotted","striped","plain"]},
+
+
+    "habitat": {"message": "Where was it?", "asked": false, "answered": false, "choices": ["ground","tree","sky"]}
+   }
+
+
