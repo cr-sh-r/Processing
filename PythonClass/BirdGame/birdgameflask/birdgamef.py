@@ -30,14 +30,15 @@ questions_list = list(questions.keys())
 def game(gamepage = "start"):
 
 ### generates bird list ###
-        qualities_dict = {} # makes two empty dictionaries called qualities_list-
+        qualities_dict = {} # makes an empty dictionary called qualities_list outside the loop  
         for q in qualities: # loops over the qualities in the list-
-            options_dict= {} # and options
+            options_dict= {} # makes temporary dictionary that gets emptied between every quality, stores the options
             for bird in birds: # loops over each 'bird' in each quality,
                 options_dict[bird[q]] = 1 # within each quality, q is looping over the possible-
-                                            # options for that quality as key with 1 as the value
-            qualities_dict[q] = list(options_dict.keys()) # lists the keys of qualities_dict as the value of-
+                                          # options for that quality as key with 1 as the value (brown: 1) de-duplicate
+            qualities_dict[q] = list(options_dict.keys()) # lists the keys of options_dict as the value of-
                                                    # the quality(why its outside the inner loop)
+        #print(qualities_dict)                                          
 ### generates questions kinda ###
         if questions["start"]["answered"] == True:                                                   
             for ask in questions_list: 
@@ -71,7 +72,7 @@ def game(gamepage = "start"):
 
         output = page["message"]
         #display_question = page["message"] 
-        display_choices = options_dict
+        display_choices = options_dict  
         print(page)
         #listL = len(options[page][choices])
         #print("listleinght", listL)
