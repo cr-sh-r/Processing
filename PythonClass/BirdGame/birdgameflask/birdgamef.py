@@ -1,7 +1,7 @@
 from flask import Flask
 import json
 
-app = Flask(__name__)
+app = Flask(__name__) # capital F Flask is the library
 
 
 # Open main bird file, read onto variable birdstring
@@ -29,66 +29,62 @@ questions_list = list(questions.keys())
 @app.route("/birdgame/<gamepage>")
 def game(gamepage = "start"):
 
-        while True:
+### generates bird list ###
+        qualities_dict = {} # makes two empty dictionaries called qualities_list-
+        for q in qualities: # loops over the qualities in the list-
+            options_dict= {} # and options
+            for bird in birds: # loops over each 'bird' in each quality,
+                options_dict[bird[q]] = 1 # within each quality, q is looping over the possible-
+                                            # options for that quality as key with 1 as the value
+            qualities_dict[q] = list(options_dict.keys()) # lists the keys of qualities_dict as the value of-
+                                                   # the quality(why its outside the inner loop)
+### generates questions kinda ###
+        if questions["start"]["answered"] == True:                                                   
+            for ask in questions_list: 
+                if questions[ask]["asked"] == False and questions[ask]["answered"] == False:
+                    gamepage = ask
+                    questions[ask]["asked"] = True
+                elif questions[ask]["asked"] == True and questions[ask]["answered"] == False:
+                    pass
+                elif questions[ask]["asked"] == True and questions[ask]["answered"] == True:
+                    pass 
+            print("ask", ask) 
+            print("questions list:", questions_list)
+            # if all questions have been asked and answered
+            #--- is this your bird 
+                                
+        page = questions[gamepage] # page is assigned to the value of key "start" in the questions json dict through gamepage^
+        print(page)
+        for i in questions[gamepage]["choices"]:  #loops over the amount of choices in the state's choices value(a list)
+            questions[gamepage]["asked"] = True 
+            if i in page["choices"]: #check if choice matched
+                cnum= page["choices"].index(i) # choice number (cnum) is the index of where the choice stored as "i" is in the list of choices 
+                choice = page["choices"][cnum] # choice is assigned by which of the choices alligned
+                questions[gamepage]["answerd"] = True 
+                #store somehow the choice
+                for c in birds:
+                        if (q, choice) in c.items():
+                            birdlocation = (c, "bird is at", birds.index(c))
+                        else: 
+                            #print(c,"bird did not match") #output
+                            birds.remove(c)
+
+        output = page["message"]
+        #display_question = page["message"] 
+        display_choices = options_dict
+        print(page)
+        #listL = len(options[page][choices])
+        #print("listleinght", listL)
+        print("cnum", cnum)
+        print("options", options_dict)
+        output = output + f"<a href='/game/{display_choices}'>{display_choices}</a>" # choice (from list?)is added to output 
+        print(output)
+
+        
+        return output
+
             
-
-    ### generates bird list ###
-
-            for q in qualities: # loops over the qualities in the list-
-                qualities_dict = {} # makes two empty dictionaries called qualities_list-
-                options = {} # and options
-                for bird in birds: # loops over each 'bird' in each quality,
-                    qualities_dict[bird[q]] = 1 # within each quality, q is looping over the possible-
-                                                # options for that quality as key with 1 as the value
-                options[q] = list(qualities_dict.keys()) # lists the keys of qualities_dict as the value of-
-                                                        # the quality(why its outside the inner loop)
-    ### generates questions kinda ###
-            if questions["start"]["answered"] == True:                                                   
-                for ask in questions_list: 
-                    if questions[ask]["asked"] == False and questions[ask]["answered"] == False:
-                        gamepage = ask
-                        questions[ask]["asked"] = True
-                    elif questions[ask]["asked"] == True and questions[ask]["answered"] == False:
-                        pass
-                    elif questions[ask]["asked"] == True and questions[ask]["answered"] == True:
-                        pass 
-                print("ask", ask) 
-                print("questions list:", questions_list)
-                # if all questions have been asked and answered
-                #--- is this your bird 
-                                    
-            page = questions[gamepage] # page is assigned to the value of key "start" in the questions json dict through gamepage^
-            print(page)
-            for i in questions[gamepage]["choices"]:  #loops over the amount of choices in the state's choices value(a list)
-                questions[gamepage]["asked"] = True 
-                if i in page["choices"]: #check if choice matched
-                    cnum= page["choices"].index(i) # choice number (cnum) is the index of where the choice stored as "i" is in the list of choices 
-                    choice = page["choices"][cnum] # choice is assigned by which of the choices alligned
-                    questions[gamepage]["answerd"] = True 
-                    #store somehow the choice
-                    for c in birds:
-                            if (q, choice) in c.items():
-                                birdlocation = (c, "bird is at", birds.index(c))
-                            else: 
-                                #print(c,"bird did not match") #output
-                                birds.remove(c)
-
-            output = page["message"]
-            #display_question = page["message"] 
-            display_choices = options 
-            print(page)
-            #listL = len(options[page][choices])
-            #print("listleinght", listL)
-            print("cnum", cnum)
-            print("options", options)
-            output = output + f"<a href='/game/{display_choices}'>{display_choices}</a>" # choice (from list?)is added to output 
-            print(output)
-
             
-            return output
-
-                
-                
 
 
 
