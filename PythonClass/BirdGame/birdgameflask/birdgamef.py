@@ -40,6 +40,26 @@ def game(gamepage = "start"):
             qualities_dict[q] = list(options_dict.keys()) # lists the keys of options_dict as the value of-
                                                    # the quality(why its outside the inner loop)
         #print(qualities_dict)  
+
+
+        nextquality = ''
+        
+        if gamepage == "start":
+            nextquality = qualities[0]
+        else:
+            i = qualities.index(gamepage)
+            i = i + 1
+            if i < len(qualities):
+                nextquality = qualities[i]
+        
+        output = ""
+        if nextquality:
+            output = f"<a href='/birdgame/{nextquality}'>{nextquality}</a>"
+        else:
+            output = "nice bird"
+        
+        return output
+             
                                         
 ### generates questions kinda ###
         if questions["start"]["answered"] == True:                                                   
