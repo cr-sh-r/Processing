@@ -1,7 +1,8 @@
-from flask import Flask
-import json
+from flask import Flask, session
+import json 
 
 app = Flask(__name__) # capital F Flask is the library
+app.secret_key = "birdgamecookies"
 
 
 # Open main bird file, read onto variable birdstring
@@ -38,7 +39,8 @@ def game(gamepage = "start"):
                                           # options for that quality as key with 1 as the value (brown: 1) de-duplicate
             qualities_dict[q] = list(options_dict.keys()) # lists the keys of options_dict as the value of-
                                                    # the quality(why its outside the inner loop)
-        #print(qualities_dict)                                          
+        #print(qualities_dict)  
+                                        
 ### generates questions kinda ###
         if questions["start"]["answered"] == True:                                                   
             for ask in questions_list: 
@@ -61,7 +63,7 @@ def game(gamepage = "start"):
             if i in page["choices"]: #check if choice matched
                 cnum= page["choices"].index(i) # choice number (cnum) is the index of where the choice stored as "i" is in the list of choices 
                 choice = page["choices"][cnum] # choice is assigned by which of the choices alligned
-                questions[gamepage]["answerd"] = True 
+                questions[gamepage]["answered"] = True 
                 #store somehow the choice
                 for c in birds:
                         if (q, choice) in c.items():
@@ -81,7 +83,8 @@ def game(gamepage = "start"):
         output = output + f"<a href='/game/{display_choices}'>{display_choices}</a>" # choice (from list?)is added to output 
         print(output)
 
-        
+        #session["hi"] = "clem"
+        #print(session["hi"])
         return output
 
             
