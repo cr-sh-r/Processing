@@ -42,7 +42,7 @@ def game(gamepage = "start"):
         #print(qualities_dict)  
 
 
-        nextquality = ''
+        nextquality = ''   
         
         if gamepage == "start":
             nextquality = qualities[0]
@@ -54,7 +54,10 @@ def game(gamepage = "start"):
         
         output = ""
         if nextquality:
-            output = f"<a href='/birdgame/{nextquality}'>{nextquality}</a>"
+            output += f"{nextquality}:<br/>"
+            for option in qualities_dict[nextquality]:
+                output += f"<a href='/birdgame/{nextquality}?answer={option}'>{option}</a><br/>" 
+            #output = f"<a href='/birdgame/{nextquality}'>{nextquality}</a>"
         else:
             output = "nice bird"
         
