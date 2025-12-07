@@ -135,15 +135,22 @@ def newbird():
         b.write(new_birdstr)
         b.close()
     
-        output = "Thanks:<br/>"
+        output = "I have collected the new bird!<br/>"
         output += f"{add_bird}<br/>" 
+        output += "<a href='/birdgame'>Back to home</a><br/>"
 
     else: # GET             #triple quote is multi line string
+        answers = session['session_answers']
         output = '<form action="/newbird" method="post">'
         for q in qualities:
-            output += f"""
-                <label for="{q}">{q}:</label><br/>
-                <input type="text" id="{q}" name="{q}" value=""/><br/>
-            """
+            if q in answers:
+                output += f"""
+                    {q} is {answers[q]}<br/>
+                """
+            else:
+                output += f"""
+                    <label for="{q}">{q}:</label><br/>
+                    <input type="text" id="{q}" name="{q}" value=""/><br/>
+                """
         output += '<br/><input type="submit" value="Submit"/></form>'
     return output
