@@ -122,13 +122,28 @@ def game(gamepage):
 
 @app.route('/newbird', methods =["GET", "POST"])
 def newbird():
+
     output = ""
     if request.method == "POST":
         add_bird = {}
         for q in qualities:
             value = request.form.get(q)
             add_bird[q] = value
-        
+
+        check_qualities = list(qualities)
+        check_qualities.remove("name") 
+
+        for bird in birds:
+            match = True
+            for q in check_qualities:
+                if add_bird[q] != bird[q]:
+                    match = False
+                    break
+            if match:  
+                output += f"You did not discover this bird. It is called a {bird['name']}<br/>"
+                output += "<a href='/birdgame'>Back to home</a><br/>"
+                return output
+                    
         birds.append(add_bird)
         new_birdstr = json.dumps(birds,indent=4)
         b = open("birds.json", "w")
@@ -155,3 +170,4 @@ def newbird():
                 """
         output += '<br/><input type="submit" value="Submit"/></form>'
     return output
+ 
