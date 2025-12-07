@@ -45,6 +45,7 @@ def nobird():
 def game(gamepage):
         
         
+        
                 #game is called when the user clicks so it is either the start page or a link which is the answer to the previous page you displayed
 
 ### handle current url to get answers up to date ###
@@ -123,27 +124,20 @@ def game(gamepage):
 def newbird():
     output = ""
     if request.method == "POST":
-        name = request.form.get("name")
-        color = request.form.get("color")
-        pattern = request.form.get("pattern")
-        habitat = request.form.get("habitat")
-
-        add_bird_list = [name, color, pattern, habitat]
         add_bird = {}
-        i = 0
-        for q in birds[0]:
-            add_bird[q] = add_bird_list[i] # I think this will only go over the amount of times there are qualities?
-            i = i + 1
+        for q in qualities:
+            value = request.form.get(q)
+            add_bird[q] = value
         
         birds.append(add_bird)
         new_birdstr = json.dumps(birds,indent=4)
-        f = open("birds.json", "w")
-        f.write(birds)
+        b = open("birds.json", "w")
+        b.write(new_birdstr)
+        b.close()
     
-
         output = "Thanks:<br/>"
-        output += f"{name}<br/>"
-        output += f"{color}<br/>"
+        output += f"{add_bird}<br/>" 
+
     else: # GET             #triple quote is multi line string
         output = """                    
 <form action="/newbird" method="post">

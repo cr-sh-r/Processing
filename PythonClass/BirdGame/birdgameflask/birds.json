@@ -1,26 +1,33 @@
 [
     {
-        "name": "spotted chickory", 
-        "color": "brown", 
-        "pattern": "spotted", 
-        "habitat": "ground" 
-    },
-    {
-        "name": "striped jay",
-        "color": "brown", 
-        "pattern": "striped", 
-        "habitat": "tree" 
-    },
-    {
-        "name": "lisa", 
-        "color": "white", 
-        "pattern": "plain", 
+        "name": "spotted chickory",
+        "color": "brown",
+        "pattern": "spotted",
         "habitat": "ground"
     },
     {
-        "name": "chris", 
-        "color": "white", 
-        "pattern": "spotted", 
+        "name": "striped jay",
+        "color": "brown",
+        "pattern": "striped",
+        "habitat": "tree"
+    },
+    {
+        "name": "lisa",
+        "color": "white",
+        "pattern": "plain",
+        "habitat": "ground"
+    },
+    {
+        "name": "chris",
+        "color": "white",
+        "pattern": "spotted",
+        "habitat": "sky"
+    },
+    {
+        "name": "songbird",
+        "color": "brown",
+        "pattern": "plain",
         "habitat": "sky"
     }
+ 
 ]
