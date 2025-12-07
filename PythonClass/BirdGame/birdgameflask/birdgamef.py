@@ -145,7 +145,8 @@ def newbird():
         for q in qualities:
             if q in answers:
                 output += f"""
-                    {q} is {answers[q]}<br/>
+                    {q} is {answers[q]}
+                    <input type="hidden" name="{q}" value="{answers[q]}"><br/>
                 """
             else:
                 output += f"""

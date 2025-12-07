@@ -34,5 +34,17 @@
         "color": "yellow",
         "pattern": "plain",
         "habitat": "ground"
+    },
+    {
+        "name": "seagull ",
+        "color": "white",
+        "pattern": "spotted",
+        "habitat": "sea"
+    },
+    {
+        "name": "great feet bird",
+        "color": "brown",
+        "pattern": "striped",
+        "habitat": "ground"
     }
 ]
