@@ -120,3 +120,22 @@ def game(gamepage):
             output += f"this is your bird: {filtered_birds} "
         
         return output
+
+@app.route('/newbird', methods =["GET", "POST"])
+def newbird():
+    output = ""
+    if request.method == "POST":
+        name = request.form.get("name")
+        # todo save to json
+        output = "Thanks:<br/>"
+        output += f"{name}";
+    else: # GET             #tripple quote is multi line string
+        output = """                    
+<form action="/newbird" method="post">
+    <label for="name">Name:</label><br/>
+    <input type="text" id="name" name="name" value=""/><br/>
+    <input type="submit" value="Submit"/>
+</form> 
+        """
+    return output
+
