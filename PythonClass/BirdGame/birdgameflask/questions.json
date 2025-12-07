@@ -1,6 +1,8 @@
 
    {
-    "start": "Did you see a bird?",
+    "home": "Did you see a bird?",
+
+    "nobird": "Come back when you have seen a bird.",
 
     "color": "What color was it?",
  

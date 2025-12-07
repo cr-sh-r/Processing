@@ -27,8 +27,27 @@ questions_list = list(questions.keys())
 #ask = "start"
 
 @app.route("/birdgame")
+def home():
+    output = ""
+    question = questions["home"]
+    output += f"{question}<br/>"
+    output += f"<a href='/birdgame/start'>yes</a><br/>"
+    output += f"<a href='/nobirdgame'>no</a><br/>"
+    
+    return output
+    
+@app.route("/nobirdgame")
+def nobird():
+    question = questions["nobird"]
+    output = f"{question}<br/>"
+    output += f"<a href='/birdgame'>ok</a><br/>"
+
+    return output
+
+    
+
 @app.route("/birdgame/<gamepage>")
-def game(gamepage = "start"):
+def game(gamepage):
         
         
                 #game is called when the user clicks so it is either the start page or a link which is the answer to the previous page you displayed
