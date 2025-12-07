@@ -93,7 +93,8 @@ def game(gamepage = "start"):
         #output += f"{filtered_qualities}<br/>"
 
         if nextquality:
-            output += f"{nextquality}:<br/>"
+            nextquestion = questions[nextquality]
+            output += f"{nextquestion}<br/>"
             for option in qualities_dict[nextquality]:
                 output += f"<a href='/birdgame/{nextquality}?answer={option}'>{option}</a><br/>"
         else:
