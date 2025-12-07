@@ -126,16 +126,19 @@ def newbird():
     output = ""
     if request.method == "POST":
         name = request.form.get("name")
+        color = request.form.get("color")
         # todo save to json
         output = "Thanks:<br/>"
-        output += f"{name}";
-    else: # GET             #tripple quote is multi line string
+        output += f"{name}<br/>"
+        output += f"{color}<br/>"
+    else: # GET             #triple quote is multi line string
         output = """                    
 <form action="/newbird" method="post">
     <label for="name">Name:</label><br/>
     <input type="text" id="name" name="name" value=""/><br/>
+    <label for="color">Color:</label><br/>
+    <input type="text" id="color" name="color" value=""/><br/>
     <input type="submit" value="Submit"/>
 </form> 
         """
     return output
-
