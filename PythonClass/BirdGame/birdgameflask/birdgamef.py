@@ -139,17 +139,11 @@ def newbird():
         output += f"{add_bird}<br/>" 
 
     else: # GET             #triple quote is multi line string
-        output = """                    
-<form action="/newbird" method="post">
-    <label for="name">Name:</label><br/>
-    <input type="text" id="name" name="name" value=""/><br/>
-    <label for="color">Color:</label><br/>
-    <input type="text" id="color" name="color" value=""/><br/>
-    <label for="pattern">Pattern:</label><br/>
-    <input type="text" id="pattern" name="pattern" value=""/><br/>
-    <label for="habitat">Habitat:</label><br/>
-    <input type="text" id="habitat" name="habitat" value=""/><br/>
-    <input type="submit" value="Submit"/>
-</form> 
-        """
+        output = '<form action="/newbird" method="post">'
+        for q in qualities:
+            output += f"""
+                <label for="{q}">{q}:</label><br/>
+                <input type="text" id="{q}" name="{q}" value=""/><br/>
+            """
+        output += '<br/><input type="submit" value="Submit"/></form>'
     return output

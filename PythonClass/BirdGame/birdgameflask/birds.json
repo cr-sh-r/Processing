@@ -28,6 +28,11 @@
         "color": "brown",
         "pattern": "plain",
         "habitat": "sky"
+    },
+    {
+        "name": "french fry",
+        "color": "yellow",
+        "pattern": "plain",
+        "habitat": "ground"
     }
- 
 ]
