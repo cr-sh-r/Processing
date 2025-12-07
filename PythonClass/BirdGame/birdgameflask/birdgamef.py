@@ -30,7 +30,8 @@ questions_list = list(questions.keys())
 @app.route("/birdgame/<gamepage>")
 def game(gamepage = "start"):
         
-        #game is called when the user clicks so it is either the start page or a link which is the answer to the previous page you displayed
+        
+                #game is called when the user clicks so it is either the start page or a link which is the answer to the previous page you displayed
 
 ### handle current url to get answers up to date ###
         answers = {}                              # gets wiped every time loaded or clicked
@@ -68,42 +69,34 @@ def game(gamepage = "start"):
 
 
         qualities_dict = {}                                # makes an empty dictionary called qualities_list outside the loop  
-        for q in qualities:                                # loops over the qualities in the list-
+        for q in filtered_qualities:                                # loops over the qualities in the list-
             options_dict= {}                               # makes temporary dictionary that gets emptied between every quality, stores the options
-            for bird in birds:                             # loops over each 'bird' in each quality,
+            for bird in filtered_birds:                             # loops over each 'bird' in each quality,
                 options_dict[bird[q]] = 1                  # within each quality, q is looping over the possible-
                                                            # options for that quality as key with 1 as the value (brown: 1) de-duplicate
             qualities_dict[q] = list(options_dict.keys())  # lists the keys of options_dict as the value of-
                                                            # the quality(why its outside the inner loop)
                                                            #print(qualities_dict)  
 
-### handle current url ###
+
     #get answers up to date
         nextquality = ''                          #empty string that will hold the quality of the next page of question???
-         
-        if gamepage == "start": 
-            nextquality = qualities[0]            # hard coded to take the first quality on start (color)
-        else:                                     # if the gamepage is not start, assuming no link changing manually, 
-            i = qualities.index(gamepage)         # finds where the current quality is in the list of qualities
-            i = i + 1                             #incriment to next one in list
-            if i < len(qualities):                # if i has not exceeded the list length > if it has, nextqualities stays empty
-                nextquality = qualities[i]        # assign nextquality 
-        
-    #filter based on answers 
-    #find next quality/question to ask
+        if filtered_qualities:
+            nextquality = filtered_qualities[0]
+
+    
         
 ### generate webpage ###      
         output = ""
-
-        output += f"{answers}<br/>"
-        output += f"{filtered_birds}<br/>"
-        output += f"{filtered_qualities}<br/>"
+        #output += f"{answers}<br/>"
+        #output += f"{filtered_birds}<br/>"
+        #output += f"{filtered_qualities}<br/>"
 
         if nextquality:
             output += f"{nextquality}:<br/>"
             for option in qualities_dict[nextquality]:
                 output += f"<a href='/birdgame/{nextquality}?answer={option}'>{option}</a><br/>"
         else:
-            output += "nice bird"
+            output += f"this is your bird: {filtered_birds} "
         
         return output
