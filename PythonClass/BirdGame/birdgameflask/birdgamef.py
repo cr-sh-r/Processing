@@ -1,4 +1,4 @@
-from flask import Flask, session
+from flask import Flask, session, request
 import json 
 
 app = Flask(__name__) # capital F Flask is the library
@@ -29,6 +29,7 @@ questions_list = list(questions.keys())
 @app.route("/birdgame")
 @app.route("/birdgame/<gamepage>")
 def game(gamepage = "start"):
+        #game is called when the user clicks so it is either the start page or a link which is the answer to the previous page you displayed
 
 ### generates bird list ###
         qualities_dict = {} # makes an empty dictionary called qualities_list outside the loop  
@@ -41,25 +42,42 @@ def game(gamepage = "start"):
                                                    # the quality(why its outside the inner loop)
         #print(qualities_dict)  
 
-
-        nextquality = ''   
+### handle current url ###
+        nextquality = '' #empty string that will hold the quality of the next page of question???
+        answers = {} # gets wiped every time loaded or clicked
         
-        if gamepage == "start":
-            nextquality = qualities[0]
-        else:
-            i = qualities.index(gamepage)
-            i = i + 1
-            if i < len(qualities):
-                nextquality = qualities[i]
+        if gamepage == "start": 
+            nextquality = qualities[0] # hard coded to take the first quality on start (color)
+        else: # if the gamepage is not start, assuming no link changing manually, 
+            answers = session['session_answers'] # session is a flask dictionary, 'session_answers' is a key in the dictionary, 
+            #the value is another dictionary we are assigning the inner dictionary to the variable answers
+            answer = request.args.get('answer') # answer is a variable that gets assigned what option was just clicked, 
+            # so the current  url (example):/birdgame/color?answer=white holds through the query paramater the option of the previous question that was chosen
+            answers[gamepage] = answer # takes the answer that we just pulled from the query and puts it as the value of the key 'gamepage' which is the current 
+            #quality that is not the displayed web quality(that technically doesnt exist because we havent sent the new page at this point in the python code or figured out what the nextquality is)
+            # but the one from the url because it is the link itself that will get us to the next page that is holding the information 
+            i = qualities.index(gamepage) # finds where the current quality is in the list of qualities
+            i = i + 1 #incriment to next one in list
+            if i < len(qualities): # if i has not exceeded the list length > if it has, nextqualities stays empty
+                nextquality = qualities[i] # assign nextquality 
         
+        session['session_answers'] = answers # answers is empty on start, but if it gets a answer from the else block it will be put into session as a value to key session_answers
+        session.modified = True #makes sure flask stores every time?
+        
+### generate webpage ###      
         output = ""
+
+        output += f"{answers}<br/>"
+        #output += "current answers:<br/>"
+        #for a in answers:
+        #    output += f"<br/>"
+
         if nextquality:
             output += f"{nextquality}:<br/>"
             for option in qualities_dict[nextquality]:
-                output += f"<a href='/birdgame/{nextquality}?answer={option}'>{option}</a><br/>" 
-            #output = f"<a href='/birdgame/{nextquality}'>{nextquality}</a>"
+                output += f"<a href='/birdgame/{nextquality}?answer={option}'>{option}</a><br/>"
         else:
-            output = "nice bird"
+            output += "nice bird"
         
         return output
              
