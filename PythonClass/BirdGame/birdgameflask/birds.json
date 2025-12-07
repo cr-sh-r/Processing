@@ -16,5 +16,11 @@
         "color": "white", 
         "pattern": "plain", 
         "habitat": "ground"
+    },
+    {
+        "name": "chris", 
+        "color": "white", 
+        "pattern": "spotted", 
+        "habitat": "sky"
     }
 ]
