@@ -116,6 +116,7 @@ def game(gamepage):
             output += f"{nextquestion}<br/>"
             for option in qualities_dict[nextquality]:
                 output += f"<a href='/birdgame/{nextquality}?answer={option}'>{option}</a><br/>"
+            output += f"<a href='/newbird'>none of these</a><br/>"
         else:
             output += f"this is your bird: {filtered_birds} "
         
@@ -127,14 +128,21 @@ def newbird():
     if request.method == "POST":
         name = request.form.get("name")
         color = request.form.get("color")
-        
-        # get all the form values
-        # put them in a new dict
-        # append it to birds
-        # dumps birds to a string, adding indent=4 to pretty print
-        # save string to birds.json
+        pattern = request.form.get("pattern")
+        habitat = request.form.get("habitat")
 
-        # str = json.dumps(birds,indent=4)
+        add_bird_list = [name, color, pattern, habitat]
+        add_bird = {}
+        i = 0
+        for q in birds[0]:
+            add_bird[q] = add_bird_list[i] # I think this will only go over the amount of times there are qualities?
+            i = i + 1
+        
+        birds.append(add_bird)
+        new_birdstr = json.dumps(birds,indent=4)
+        f = open("birds.json", "w")
+        #f.write(birds)
+    
 
         output = "Thanks:<br/>"
         output += f"{name}<br/>"
@@ -146,6 +154,10 @@ def newbird():
     <input type="text" id="name" name="name" value=""/><br/>
     <label for="color">Color:</label><br/>
     <input type="text" id="color" name="color" value=""/><br/>
+    <label for="pattern">Pattern:</label><br/>
+    <input type="text" id="pattern" name="pattern" value=""/><br/>
+    <label for="habitat">Habitat:</label><br/>
+    <input type="text" id="habitat" name="habitat" value=""/><br/>
     <input type="submit" value="Submit"/>
 </form> 
         """
