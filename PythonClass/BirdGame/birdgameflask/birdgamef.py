@@ -15,16 +15,11 @@ t = open("questions.json", "r")
 q_string = t.read()
 questions = json.loads(q_string)
 t.close()
-#print(questions)
+
 
 # create list called qualities taking just the keys from the birds json
-#removes the name key from the list
 qualities = list(birds[0].keys())
-qualities.remove("name")
-questions_list = list(questions.keys())
-#questions_list.remove("start")
 
-#ask = "start"
 
 @app.route("/birdgame")
 def home():
@@ -81,7 +76,9 @@ def game(gamepage):
                     break
                     
         
+        
         filtered_qualities = list(qualities)
+        filtered_qualities.remove("name") 
         for q in qualities:
             if q in answers.keys():
                 filtered_qualities.remove(q)
@@ -141,7 +138,7 @@ def newbird():
         birds.append(add_bird)
         new_birdstr = json.dumps(birds,indent=4)
         f = open("birds.json", "w")
-        #f.write(birds)
+        f.write(birds)
     
 
         output = "Thanks:<br/>"
