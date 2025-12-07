@@ -124,7 +124,7 @@ def game(gamepage):
 def newbird():
 
     output = ""
-    if request.method == "POST":
+    if request.method == "POST":   #when submit is pushed go into post
         add_bird = {}
         for q in qualities:
             value = request.form.get(q)
@@ -154,9 +154,10 @@ def newbird():
         output += f"{add_bird}<br/>" 
         output += "<a href='/birdgame'>Back to home</a><br/>"
 
-    else: # GET             #triple quote is multi line string
+    else: # GET             # displays form
         answers = session['session_answers']
-        output = '<form action="/newbird" method="post">'
+        output = "I don't know this bird... you have discovered a new bird! <br/> Name your bird and tell me the other traits"
+        output += '<form action="/newbird" method="post">'
         for q in qualities:
             if q in answers:
                 output += f"""
