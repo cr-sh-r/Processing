@@ -127,7 +127,15 @@ def newbird():
     if request.method == "POST":
         name = request.form.get("name")
         color = request.form.get("color")
-        # todo save to json
+        
+        # get all the form values
+        # put them in a new dict
+        # append it to birds
+        # dumps birds to a string, adding indent=4 to pretty print
+        # save string to birds.json
+
+        # str = json.dumps(birds,indent=4)
+
         output = "Thanks:<br/>"
         output += f"{name}<br/>"
         output += f"{color}<br/>"
