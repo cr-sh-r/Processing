@@ -1,3 +1,10 @@
+### Clementine Hecker
+### Code Toolkit Python
+### Bird Taxonomy Game 
+
+### to run you will have to put /birdgame at the end of the URL
+
+
 from flask import Flask, session, request
 import json 
 import random
