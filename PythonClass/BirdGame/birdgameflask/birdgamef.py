@@ -1,5 +1,6 @@
 from flask import Flask, session, request
 import json 
+import random
 
 app = Flask(__name__) 
 app.secret_key = "birdgamecookies" #for session cookies 
@@ -106,7 +107,7 @@ def game(gamepage):
 ### sets next quality to ask if there are ones less ##
         nextquality = ''                          
         if filtered_qualities: # checks if there is anything left in filtered qualities
-            nextquality = filtered_qualities[0]  
+            nextquality = random.choice(filtered_qualities)
 
 
 ### generate webpage for questions and bird guess ###      
@@ -137,12 +138,12 @@ def newbird():
         check_qualities.remove("name") 
 
         for bird in birds:
-            match = True
+            matchb = True
             for q in check_qualities:            ### checking if the bird entered matches any in the data ###
                 if add_bird[q] != bird[q]:
-                    match = False
+                    matchb = False
                     break
-            if match:  
+            if matchb:  
                 output += f"You did not discover this bird. It is called a {bird['name']}<br/>"
                 output += "<a href='/birdgame'>Back to home</a><br/>"
                 return output
