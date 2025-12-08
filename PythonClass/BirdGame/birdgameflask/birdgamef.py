@@ -29,11 +29,16 @@ for bird in birds:
 
     for q in bird:
         if q not in qualities:
-            print(bird,"has an extra quality", q)
+            print(bird,"has an extra quality:", q)
             exit()
 
 # also make sure there are questions for each quality
 
+for q in qualities:
+    if q != "name":
+       if q not in questions:
+        print("there is no question written for:",q)
+        exit()
 
 @app.route("/birdgame")
 def home():
