@@ -20,6 +20,20 @@ t.close()
 # create list called qualities taking just the keys from the birds json
 qualities = list(birds[0].keys())
 
+# make sure all birds have all qualities and no extra qualities
+for bird in birds:
+    for q in qualities:
+        if q not in bird:
+            print(bird, "missing:", q)
+            exit()
+
+    for q in bird:
+        if q not in qualities:
+            print(bird,"has an extra quality", q)
+            exit()
+
+# also make sure there are questions for each quality
+
 
 @app.route("/birdgame")
 def home():
