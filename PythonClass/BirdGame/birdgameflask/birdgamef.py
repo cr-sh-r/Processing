@@ -117,7 +117,7 @@ def game(gamepage):
             output += f"{nextquestion}<br/>"
             for option in qualities_dict[nextquality]:
                 output += f"<a href='/birdgame/{nextquality}?answer={option}'>{option}</a><br/>"
-            output += f"<br/><a href='/newbird'>none of these</a><br/>"
+            output += f"<br/><a href='/newbird'>something else</a><br/>"
             output += f"<br/>I have {len(filtered_birds)} guesses"
         else:
             output += f"your bird is called a:<br/>"
