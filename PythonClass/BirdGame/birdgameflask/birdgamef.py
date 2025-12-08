@@ -117,10 +117,16 @@ def game(gamepage):
             output += f"{nextquestion}<br/>"
             for option in qualities_dict[nextquality]:
                 output += f"<a href='/birdgame/{nextquality}?answer={option}'>{option}</a><br/>"
-            output += f"<a href='/newbird'>none of these</a><br/>"
-            output += f"I have {len(filtered_birds)} guesses"
+            output += f"<br/><a href='/newbird'>none of these</a><br/>"
+            output += f"<br/>I have {len(filtered_birds)} guesses"
         else:
-            output += f"this is your bird: {filtered_birds} "
+            output += f"your bird is called a:<br/>"
+            for b in filtered_birds[0]:
+                if b == "name":
+                    output += f"{filtered_birds[0][b]}<br/>"
+                else:
+                    output += f" {b}: {filtered_birds[0][b]},  "
+            output += "<br/><br/><a href='/birdgame/start'>I saw another bird</a><br/>"
         
         return output
 

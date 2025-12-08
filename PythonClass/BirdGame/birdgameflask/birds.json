@@ -3,48 +3,56 @@
         "name": "spotted chickory",
         "color": "brown",
         "pattern": "spotted",
-        "habitat": "ground"
+        "habitat": "ground",
+        "size": "small"
     },
     {
         "name": "striped jay",
         "color": "brown",
         "pattern": "striped",
-        "habitat": "tree"
+        "habitat": "tree",
+        "size": "small"
     },
     {
-        "name": "lisa",
+        "name": "lisa bird",
         "color": "white",
         "pattern": "plain",
-        "habitat": "ground"
+        "habitat": "ground",
+        "size": "large"
     },
     {
-        "name": "chris",
+        "name": "chris bird",
         "color": "white",
         "pattern": "spotted",
-        "habitat": "sky"
+        "habitat": "sky",
+        "size": "medium"
     },
     {
         "name": "songbird",
         "color": "brown",
         "pattern": "plain",
-        "habitat": "sky"
+        "habitat": "sky",
+        "size": "small"
     },
     {
-        "name": "french fry",
+        "name": "french fry bird",
         "color": "yellow",
         "pattern": "plain",
-        "habitat": "ground"
+        "habitat": "ground",
+        "size": "small"
     },
     {
-        "name": "seagull ",
+        "name": "dotted seagull",
         "color": "white",
         "pattern": "spotted",
-        "habitat": "sea"
+        "habitat": "sea",
+        "size": "medium"
     },
     {
         "name": "great feet bird",
         "color": "brown",
         "pattern": "striped",
-        "habitat": "ground"
+        "habitat": "ground",
+        "size": "large"
     }
 ]
