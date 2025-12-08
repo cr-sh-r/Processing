@@ -125,7 +125,7 @@ def game(gamepage):
                 if b == "name":
                     output += f"{filtered_birds[0][b]}<br/>"
                 else:
-                    output += f" {b}: {filtered_birds[0][b]},  "
+                    output += f" {b}: {filtered_birds[0][b]}&nbsp;&nbsp;&nbsp;"
             output += "<br/><br/><a href='/birdgame/start'>I saw another bird</a><br/>"
         
         return output
