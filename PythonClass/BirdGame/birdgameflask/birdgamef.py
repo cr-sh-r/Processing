@@ -167,14 +167,20 @@ def newbird():
         b = open("birds.json", "w")
         b.write(new_birdstr)            #write the bird list over the old json file
         b.close()
-    
-        output = "I have collected the new bird!<br/>"
-        output += f"{add_bird}<br/>" 
+
+        for b in add_bird:
+                if b == "name":
+                    output += f"You have named this bird:&nbsp;{add_bird[b]}<br/>"
+                else:
+                    output += f" {b}: {add_bird[b]}&nbsp;&nbsp;&nbsp;"
+
+        output += "I have collected the new bird!<br/>"
+        output += "<br/><br/><a href='/birdgame/start'>I saw another bird</a><br/>"
         output += "<a href='/birdgame'>Back to home</a><br/>"
 
     else: # GET             # displays form for new bird input 
         answers = session['session_answers'] # get current answers to see what is known about new bird already
-        output = "I don't know this bird... you have discovered a new bird! <br/> Name your bird and tell me the other traits"
+        output = "I don't know this bird... you have discovered a new bird! <br/> Name your bird and describe its other traits"
         output += '<form action="/newbird" method="post">'      #starts the form generating 
         for q in qualities:
             if q in answers:

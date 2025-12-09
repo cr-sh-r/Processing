@@ -61,5 +61,26 @@
         "pattern": "striped",
         "habitat": "sea",
         "size": "small"
+    },
+    {
+        "name": "loud tree bird",
+        "color": "blue",
+        "pattern": "striped",
+        "habitat": "tree",
+        "size": "small"
+    },
+    {
+        "name": "clem",
+        "color": "yellow",
+        "pattern": "spotted",
+        "habitat": "sky",
+        "size": "medium"
+    },
+    {
+        "name": "ladybug bird",
+        "color": "red",
+        "pattern": "spotted",
+        "habitat": "tree",
+        "size": "small"
     }
 ]
